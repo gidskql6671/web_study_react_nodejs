@@ -1,0 +1,65 @@
+html, body{
+	height: 100%;
+	overflow: hidden;
+}
+
+.container{
+	border : none;
+	border-radius: 5px;
+	padding : 50px;
+	max-width: 800px;
+	height: 700px;
+	margin : 100px auto;
+	background-color: lightskyblue;
+}
+
+.container-item-list{
+	background-color: white;
+	width: 100%;
+	margin-top: 20px;
+	border-radius: 4px;
+}
+.container-item-list table{
+	width: 100%;
+}
+.container-item-list img{
+	height: 100%;
+}
+.container-footer{
+	width: 100%;
+}
+.container-footer a{
+	float: left;
+}
+
+.btn-payment{
+	width: 35%;
+	padding: 15px;
+	float: right;
+	background-color: #003366;
+	color: white;
+	border: none;
+	border-radius : 2px;
+}
+.btn-payment:hover{
+	background-color: #002053;
+}
+.btn-payment:focus{
+	background-color: red;
+}
+.btn-payment:active{
+	background-color: #000633;
+}
+
+
+table{
+	border-collapse: collapse;
+}
+
+td, th{
+	border-bottom : 2px solid lightskyblue;
+	padding : 10px;
+	vertical-align: center;
+	
+	height : 100px;
+}
