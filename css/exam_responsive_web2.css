@@ -1,0 +1,56 @@
+div {
+	box-sizing: border-box;
+}
+body{
+	background-color: gray;
+}
+
+.container{
+	background-color: LightGray  ;
+	width: 90%;
+	max-width: 1000px;
+	margin: auto;
+	padding: 40px;
+	border-radius: 4px;
+}
+.container-items{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 80%;
+	margin: auto;
+}
+.item-box{
+	width: 30%;
+	margin-top: 40px;
+	text-align: center;
+	vertical-align: center;
+	background-color: white;
+	border-radius: 3px;
+}
+.item-box>div{
+	width: 100%;
+	position: relative;
+}
+.overlay{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.5);
+	opacity: 0;
+	transition: opacity 1s;
+}
+.overlay:hover{
+	opacity: 1;
+}
+.overlay p{
+	color: white;
+	text-align: center;
+	padding: 30px;
+	font-size: 30px;
+}
+
+@media screen and (max-width: 768px){
+}
+@media screen and (max-width: 568px){
+}
