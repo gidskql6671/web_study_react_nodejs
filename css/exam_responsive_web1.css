@@ -12,7 +12,14 @@ div {
 	
 	border: 1px solid black;
 }
-
+.box span{
+	margin-top: 20px;
+	width: 100%;
+	text-align: center;
+}
+.box p{
+	margin: 5px;
+}
 
 @media screen and (max-width: 768px){
 	.box-container{
