@@ -1,62 +1,62 @@
-.main-background{
+.main-background {
 	width: 100%;
 	height: 500px;
 	background-image: url(../image/shoes.jpg);
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-	
+
 	padding-top: 200px;
 }
-.main-title{
+.main-title {
 	color: white;
 	text-align: center;
 	font-size: 60px;
 }
 
-.main-navbar{
-	border-bottom : 2px solid blue;
-	border-top : 2px solid blue;
+.main-navbar {
+	border-bottom: 2px solid blue;
+	border-top: 2px solid blue;
 	margin: auto;
-	padding: 15px;
+	padding-top: 15px;
 }
-.nav-button{
-	margin: auto;
+.main-nav-button {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
 }
-.nav-button li{
-	display: inline-block;
-	width: 24%;
-	height: 25px;
-	text-align: center;
-	text-height: 25px;
-	border : 1px solid gray;
-	border-radius: 10px;
-}
-.nav-button a {
+.main-nav-button a {
+	padding: 5px 20px;
 	text-decoration: none;
+	border: 1px solid gray;
+	border-radius: 8px;
 }
-.nav-button a:visited {
+.main-nav-button a:visited {
 	color: black;
 }
 
-
-.container{
-	border-bottom : 1px solid black;
-	padding : 10px;
+.my-container {
+	border-bottom: 1px solid black;
+	padding: 10px;
 	max-width: 700px;
-	margin : auto;
+	margin: auto;
 }
-.content{
-	width: 78%;
-	height : 100px;
+.content {
+	width: 70%;
+	height: 100px;
 	display: inline-block;
 }
-.content-image{
+.content-image {
 	width: 20%;
-	height : 100px;
+	height: 100px;
 	display: inline-block;
 	margin-left: 10px;
 	margin-top: 20px;
 	vertical-align: top;
 }
-
+@media screen and (max-width: 568px){
+	.main-nav-button{
+		flex-direction: column;
+	}
+}
