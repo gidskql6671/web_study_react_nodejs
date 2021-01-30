@@ -1,0 +1,15 @@
+.profile > div *{
+	margin: 5px;
+}
+.profile > img{
+	vertical-align: center;	
+}
+.container{
+	background: #f7f9fc
+}
+
+@media (max-width: 768px){
+	.profile-header-content{
+		margin-top: 20px;
+	}
+}
