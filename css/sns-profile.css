@@ -1,14 +1,49 @@
-.profile > div *{
-	margin: 5px;
+body {
+	background: #f7f9fc;
 }
-.profile > img{
-	vertical-align: center;	
+.white-box {
+	background: white;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0.5px 0.5px 2px 1px #eee;
 }
-.container{
-	background: #f7f9fc
+
+.profile-header, .profile-nav, .profile-content,.profile-sidebar{
+	padding: 5px;
+}
+.horizontal-line {
+	background-color: lightgray;
+	border: none;
+	border-radius: 5px;
+	height: 3px;
+}
+.vertical-line{
+	background-color: lightgray;
+	border: none;
+	width: 3px;
+	height: 80%;
+}
+span.hashtag {
+	display: inline-block;
+	border: 1px solid lightgray;
+	border-radius: 100px;
+	padding: 3px 12px 5px 12px;
+	margin-right: 2px;
+	margin-bottom: 5px;
+}
+.friend img{
+	width: 35%;
+	height: auto;
+}
+.friend p, .friend h5{
+	margin-top: 0px;
+	margin-bottom: 3px;
 }
 
 @media (max-width: 768px){
+	.vertical-line{
+		height:0px;
+	}
 	.profile-header-content{
 		margin-top: 20px;
 	}
