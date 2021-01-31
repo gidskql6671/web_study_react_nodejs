@@ -40,6 +40,22 @@ span.hashtag {
 	margin-bottom: 3px;
 }
 
+.hashtag:hover {
+	animation-name: 흔들;
+	animation-duration: 0.5s;
+}
+@keyframes 흔들{
+	33% {
+		transform : rotate(20deg);
+	}
+	66%{
+		transform : rotate(-20deg);
+	}
+	100% {
+		transform : rotate(0deg);
+	}
+}
+
 @media (max-width: 768px){
 	.vertical-line{
 		height:0px;
