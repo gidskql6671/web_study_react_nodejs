@@ -17,3 +17,9 @@
 	
 	margin-bottom: 20px;
 }
+
+.siteJumbotron{
+	background-image: url("images/background.jpg");
+	background-position: center;
+	color: white;
+}

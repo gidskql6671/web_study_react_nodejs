@@ -1,23 +1,107 @@
 /*eslint-disable*/
 
 import React, {useState} from 'react';
+import { Jumbotron, Button, Col, Row, Card, Container, Navbar, Nav } from 'react-bootstrap';
 import './App.css';
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
+
+import datas from './data.js';
+import Detail from './detail.js';
+
 
 function App() {
 	
 	return (
 		<div className="App">
-			<TestPropsChildren>
 				
-				{/* <TestModal /> */}
-				{/* <TestUseState /> */}
-				{/*<TestInput1 /> */}
-				<TestPost />
+			{/* <TestModal /> */}
+			{/* <TestUseState /> */}
+			{/*<TestInput1 /> */}
+			{/* <TestPost /> */}
+			{/* <TestBootstrap /> */}
 				
-			</TestPropsChildren>
+			<TestRouter />
+			
 		</div>
 	);
 }
+
+function TestRouter(){
+	return(
+	<div>
+		<Navbar bg="light" expand="lg">
+			<Navbar.Brand href="#home">Nav-Bar</Navbar.Brand>
+			<Navbar.Toggle aria-controls="basic-navbar-nav" />
+			<Navbar.Collapse id="basic-navbar-nav">
+				<Nav className="mr-auto">
+					<Nav.Link><Link to="/"> home </Link></Nav.Link>
+					<Nav.Link><Link to="/detail"> detail </Link></Nav.Link>
+				</Nav>
+			</Navbar.Collapse>
+		</Navbar>
+		
+		<Switch>
+			<Route path="/" exact>
+				<Jumbotron className="siteJumbotron">
+					<h1>Hello, world!</h1>
+					<p>
+					This is a simple hero unit, a simple jumbotron-style component for calling
+					extra attention to featured content or information.
+					</p>
+					<p>
+						<Button variant="primary">Learn more</Button>
+					</p>
+				</Jumbotron>
+			</Route>
+			<Route path="/detail">
+				<Detail />
+			</Route>
+		</Switch>
+		
+	</div>
+	);
+}
+
+function TestBootstrap(){
+	let [post, setPost] = useState(datas);
+	
+	return(
+		<div>
+			<Jumbotron className="siteJumbotron">
+				<h1>Hello, world!</h1>
+				<p>
+				This is a simple hero unit, a simple jumbotron-style component for calling
+				extra attention to featured content or information.
+				</p>
+				<p>
+					<Button variant="primary">Learn more</Button>
+				</p>
+			</Jumbotron>
+			<Container>
+				<Row>
+					{
+						post.map((data, i) => {
+							return(
+								<Col md={4}> 
+									<Card><Card.Body>
+										<Card.Title> {data.title} </Card.Title>
+										<Card.Subtitle className="mb-2 text-muted">{data.price}</Card.Subtitle>
+										<Card.Text>
+											{data.content}
+										</Card.Text>
+									</Card.Body></Card>
+								</Col>
+							)
+						})
+					}
+				</Row>
+			</Container>
+		</div>
+	);
+
+}
+
+
 
 function TestPost(){
 	let [posts, setPosts] = useState([]);
@@ -49,10 +133,12 @@ function TestPost(){
 	}
 	function deletePost(i){
 		console.log(i);
-		// let newArray = [...posts];
-		// newArray.splice(i, 1);
-		// setPosts(newArray);
+		let newArray = [...posts];
+		newArray.splice(i, 1);
+		setPosts(newArray);
 	}
+	
+	
 	
 	return(
 		<div>
@@ -67,19 +153,13 @@ function TestPost(){
 					<div className="post" key={i}>
 						<h3> {data.name} </h3>
 						<p> {data.contents} </p>
-						<button key={i} onClick={(e)=>{deletePost(e.target.key); console.log(e.target);}}> 삭제 </button>
+						<button onClick={(e)=>{deletePost(i)}}> 삭제 </button>
 					</div>
 				);
 			})}
 		</div>
 	);
 }
-
-
-
-
-
-
 
 function Modal(props){
 	let {data, num} = props;
@@ -151,14 +231,6 @@ function TestInput1(){
 			<input onChange={(e)=>{ setInputValue(e.target.value) }} />
 			
 			<p> input 값 : {inputValue} </p>
-		</div>
-	);
-}
-
-function TestPropsChildren(props){ // wrapper 역할로 사용...
-	return(
-		<div className="wrapper">
-			{props.children}
 		</div>
 	);
 }
