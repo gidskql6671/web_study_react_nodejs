@@ -4,40 +4,81 @@ import React, {useState} from 'react';
 import './App.css';
 
 function App() {
-	let [modal, setmodal] = useState(false);
-	let [seletedNumber, setSeletedNumber] = useState(0);
-	let [testData, setTestData] = useState(["aaaaa", "bbbbbb", "cccccc"]);
 	
 	return (
 		<div className="App">
 			<TestPropsChildren>
-				<div>
-					{
-						testData.map(
-							function(data, i){
-								return(
-									<div className="post" onClick={()=>{setSeletedNumber(i)}}>
-										<h3>{data}</h3>
-										<hr />
-									</div>
-								);
-							}
-						)
-					}
-				</div>
-				<button onClick={()=>{setmodal(data=>!data)}}> ON </button>
 				
-				{/* <Test1 /> */}
+				{/* <TestModal /> */}
+				{/* <TestUseState /> */}
+				{/*<TestInput1 /> */}
+				<TestPost />
 				
-				{
-					modal === true
-					? <Modal data={testData} num={seletedNumber}></Modal>
-					: null
-				}
 			</TestPropsChildren>
 		</div>
 	);
 }
+
+function TestPost(){
+	let [posts, setPosts] = useState([]);
+	let [inputValue, setInputValue] = useState({});
+	
+	
+	function changeInput(e){
+		let {name, value} = e.target;
+		
+		/* 새로운 오브젝트를 만들어서 업데이트 */
+		// let newObject = {...inputValue};
+		// newObject[name] = value;
+		// setInputValue(newObject);
+		
+		/* 비구조화 할당을 통한 업데이트 */
+		setInputValue(
+			{
+				...inputValue,
+				[name]: value
+			}
+		);
+	}
+	function createPost(){
+		let newArray = [...posts];
+		let {name, contents} = {...inputValue};
+		
+		newArray.push({name: name, contents: contents});
+		setPosts(newArray);
+	}
+	function deletePost(i){
+		console.log(i);
+		// let newArray = [...posts];
+		// newArray.splice(i, 1);
+		// setPosts(newArray);
+	}
+	
+	return(
+		<div>
+			<div>
+				<span> 글 제목 : </span> <input name="name" onChange={changeInput} />
+				<span> 글 내용 : </span> <input name="contents" onChange={changeInput} />
+				<button onClick={createPost}> 글 생성 </button>
+			</div>
+			
+			{posts.map(function(data, i){
+				return(
+					<div className="post" key={i}>
+						<h3> {data.name} </h3>
+						<p> {data.contents} </p>
+						<button key={i} onClick={(e)=>{deletePost(e.target.key); console.log(e.target);}}> 삭제 </button>
+					</div>
+				);
+			})}
+		</div>
+	);
+}
+
+
+
+
+
 
 
 function Modal(props){
@@ -51,8 +92,36 @@ function Modal(props){
 		</div>
 	);
 }
+function TestModal(){
+	let [modal, setmodal] = useState(false);
+	let [seletedNumber, setSeletedNumber] = useState(0);
+	let [testData, setTestData] = useState(["aaaaa", "bbbbbb", "cccccc"]);
+	
+	return(
+		<div>
+			<div>
+			{
+				testData.map(function(data, i){
+					return(
+						<div className="post" key={i} onClick={()=>{setSeletedNumber(i)}}>
+							<h3>{data}</h3>
+							<hr />
+						</div>
+					);
+				})
+			}
+			</div>
+			<button onClick={()=>{setmodal(data=>!data)}}> ON </button>
+			{
+				modal === true
+				? <Modal data={testData} num={seletedNumber}></Modal>
+				: null
+			}
+		</div>
+	);
+}
 
-function Test1(){
+function TestUseState(){
 	let [test, setTest] = useState(0);
 	let [a, setA] = useState([1,2]);
 	
@@ -70,6 +139,18 @@ function Test1(){
 			<p onClick={()=>{asd(1);}}>bbbbbbbb</p>
 			<p>{a[0]}</p>
 			<p>{a[1]}</p>
+		</div>
+	);
+}
+
+function TestInput1(){
+	let [inputValue, setInputValue] = useState("");
+	
+	return(
+		<div>
+			<input onChange={(e)=>{ setInputValue(e.target.value) }} />
+			
+			<p> input 값 : {inputValue} </p>
 		</div>
 	);
 }
