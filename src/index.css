@@ -1,3 +1,12 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&Roboto:wght@500;700;900&display=swap');
+
+
+body{
+	background-color: #222831; /* #222831  #393e46  #ffd369  #eeeeee */
+	color: white;
+	font-family: 'Spoqa Han Sans Neo', 'Roboto', sans-serif;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

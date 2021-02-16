@@ -1,16 +1,15 @@
-/*eslint-disable*/
+import React, { useState, useEffect } from 'react';
+import { Button } from 'react-bootstrap';
 
-import React, {useState, useEffect} from 'react';
 
-
-const Detail = () =>{
-	
-	
-	return(
-		<div> Detail </div>
+const Detail = () => {
+	return (
+		<div>
+			Detail
+			<Button onClick={()=>{ console.log("Z")}}>a</Button>
+		</div>
 	);
-}
-
+};
 
 
 export default Detail;
