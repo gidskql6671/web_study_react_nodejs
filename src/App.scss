@@ -1,28 +1,44 @@
-.App{
-	width: 100%;
-}
-
 .container-navbar{
 	background-color: #393e46;
-}
-.navbar-main{
-	padding: 0px;
 	
-}
-
-.nav-link{
-	color: white;
-	
-	&:hover{
+	.nav-link{
 		color: white;
+	
+		&:hover{
+			color: white;
 	}
 }
-
-.container-profile {
-	width: 10%;
-	position: fixed;
 }
+
 
 .container-main{
 	margin-top: 30px;
+	height: 1200px;
+}
+.container-profile {
+	width: 100%;
+	text-align: center;
+	padding: 0 40px;
+	
+	&>div{
+		padding: 20px 10px;
+		border: 3px dashed white;
+		border-radius: 10px;
+	}
+}
+.image-profile{
+	width: 60%;
+}
+
+.container-content{
+	padding: 0 40px;
+}
+
+.image-toggle-profile{
+	width: 100px;
+	position: fixed;
+	right: 10px;
+	bottom: 10px;
+	
+	z-index: 2;
 }

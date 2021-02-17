@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import { Button, Nav, Container, Navbar } from 'react-bootstrap';
+import React, {useState} from 'react';
+import { Button, Nav, Container, Navbar, Row, Col, Image } from 'react-bootstrap';
 import './App.scss';
 import { Link, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
@@ -9,16 +9,15 @@ import Home from './Home.js';
 import Detail from './Detail.js';
 import Post from './Post.js';
 
-function App() {
+const App = () => {
 	const isPc = useMediaQuery({
-		query: "(min-width:1024px)"
+		query: "(min-width:1200px)"
 	});
-	const isTablet = useMediaQuery({
-		query : "(min-width:768px) and (max-width:1023px)"
+	const isNotPc = useMediaQuery({
+		query : "(max-width:1200px)"
 	});
-	const isMobile = useMediaQuery({
-		query : "(max-width:767px)"
-	});
+	
+	let [toggleProfile, setToggleProfile] = useState(false);
 	
 	
 	return (
@@ -35,23 +34,50 @@ function App() {
 					</Navbar.Collapse>
 				</Navbar>
 			</Container>
-
-			{ isPc && <div className="container-profile">\
-				ASDASDSAASasdasdadasddsaasd\
-			</div>}
 			
-			<Container className="container-main">
-				<Switch>
-					<Route exact path="/" component={Home} />
-					<Route path="/detail" component={Detail} />
-					<Route path="/post" component={Post} />
-				</Switch>
-			</Container>
+			<Row className="container-main">
+				{ isPc && 
+					<Col xl="2" className="container-profile">
+						<Profile />
+					</Col>
+				}
+				<Col className="container-content">	
+					<Switch>
+						<Route exact path="/" component={Home} />
+						<Route path="/detail" component={Detail} />
+						<Route path="/post" component={Post} />
+					</Switch>
+				</Col>
+			</Row>
+			
+			{
+				isNotPc && (
+					toggleProfile 
+					?
+					<div>
+						zz
+					</div>
+					:
+					<Image src="/images/profile.png" roundedCircle className="image-toggle-profile" onClick={
+							() => {setToggleProfile(prev => !prev);}}/>
+					)
+			}
+		
 		</div>
 		
 	);
-}
+};
 
+const Profile = () =>{
+	
+	return(
+		<div>
+			<Image src="/images/profile.png" roundedCircle className="image-profile mb-3" />
+			<h4> 김동환 </h4>
+			<p> ASD AAA</p>
+		</div>
+	);
+};
 
 
 
