@@ -4,12 +4,25 @@
 
 .container-navbar{
 	background-color: #393e46;
-	height: 40px;
-	vertical-align: center;
+}
+.navbar-main{
+	padding: 0px;
+	
 }
 
-Nav Link{
-	
-	text-decoration: none !important;
+.nav-link{
 	color: white;
+	
+	&:hover{
+		color: white;
+	}
+}
+
+.container-profile {
+	width: 10%;
+	position: fixed;
+}
+
+.container-main{
+	margin-top: 30px;
 }
