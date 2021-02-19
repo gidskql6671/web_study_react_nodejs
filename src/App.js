@@ -1,15 +1,18 @@
-import React, {useState} from 'react';
-import { Button, Nav, Container, Navbar, Row, Col, Image } from 'react-bootstrap';
+import React, {useState, lazy, Suspense } from 'react';
+import { Nav, Container, Navbar, Row, Col, Image, Spinner } from 'react-bootstrap';
 import './App.scss';
 import { Link, Route, Switch } from 'react-router-dom';
-import axios from 'axios';
 import { useMediaQuery } from 'react-responsive';
 
 import Home from './Home.js';
-import Detail from './Detail.js';
-import Post from './Post.js';
+let Detail = lazy(() => {return import('./Detail.js')});
+let Post = lazy(() => {return import('./Post.js')});
+
+
+
 
 const App = () => {
+	
 	const isPc = useMediaQuery({
 		query: "(min-width:1200px)"
 	});
@@ -41,11 +44,13 @@ const App = () => {
 					</Col>
 				}
 				<Col className="container-content">	
-					<Switch>
-						<Route exact path="/" component={Home} />
-						<Route path="/detail" component={Detail} />
-						<Route path="/post" component={Post} />
-					</Switch>
+					<Suspense fallback={ <div className="text-center"> <Spinner animation="border" /> </div> }>
+						<Switch>
+							<Route exact path="/" component={Home} />
+							<Route path="/detail" component={Detail} />
+							<Route path="/post" component={Post} />
+						</Switch>
+					</Suspense>
 				</Col>
 			</Row>
 			
