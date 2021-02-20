@@ -4,20 +4,19 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<title>Document</title>
+		<title>Study Web Server</title>
 	</head>
 	<body>
 		<div>
-			<form>
-				<label
-					> Name : 
-					<input type="text" name="user-name" />
-				</label>
-				<label
-					> Email : 
-					<input type="email" name="user-name" />
-				</label>
-			</form>
+			<h2>
+				DB list
+			</h2>
+			
+			<ul>
+			<% for(let i = 0; i < posts.length; i++){ %>
+				<li> <%= posts[i].name %> : <%= posts[i].age %> </li>
+			<% } %>
+			</ul>
 		</div>
 	</body>
 </html>
