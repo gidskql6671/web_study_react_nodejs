@@ -1,0 +1,25 @@
+{
+  "name": "web_study",
+  "version": "1.0.0",
+  "description": "컴퓨터를 못만졌더니... 아무것도 기억이 나지 않는다... 재활이 필요하다... 코딩 애플 강의를 이용하여 공부하는 중 https://online.codingapple.com/",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://87141d7de8d7635ba927bde90f10f1e5eb2d9909@github.com/gidskql6671/web_study.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gidskql6671/web_study/issues"
+  },
+  "homepage": "https://github.com/gidskql6671/web_study#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7",
+    "properties-reader": "^2.2.0"
+  }
+}
