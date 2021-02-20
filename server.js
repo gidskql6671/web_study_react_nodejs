@@ -2,8 +2,12 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended: true}))
+const MongoClient = require('mongodb').MongoClient;
+const property = require('./properties.js');
 
+const dbLink = property.getDbLink();
+
+app.use(bodyParser.urlencoded({extended: true}))
 app.use( '/', express.static( path.join(__dirname, 'public') ));
 app.use( '/react', express.static( path.join(__dirname, 'client/build') ));
 
@@ -22,7 +26,13 @@ app.post('/add', (req, res) => {
 	res.send("전송 완료");
 });
 
-const http = require('http').createServer(app);
-http.listen(8080, function() {
-    console.log('listening on 8080')
-});
+
+MongoClient.connect(dbLink, {useNewUrlParser: true, useUnifiedTopology: true}, function(err, client){
+	if (err) return console.log(err);
+
+	const http = require('http').createServer(app);
+	http.listen(8080, function() {
+    	console.log('listening on 8080')
+	});
+})
+
