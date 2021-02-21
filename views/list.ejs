@@ -14,9 +14,29 @@
 			
 			<ul>
 			<% for(let i = 0; i < posts.length; i++){ %>
-				<li> <%= posts[i].name %> : <%= posts[i].age %> </li>
+				<li> <span> <%= posts[i].name %> : {age : <%= posts[i].age %>, _id : <%= posts[i]._id %> } </span>  
+					<button class="btn-delete-post" data-id="<%= posts[i]._id %>"> 글 삭제 </button> </li>
 			<% } %>
 			</ul>
+			
+			<button onclick="history.back()">Back</button>
 		</div>
+		
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		
+		<script>
+			
+			$('.btn-delete-post').click((e) => {
+				let postId = e.target.dataset.id;
+				
+				$.ajax({
+					method: 'DELETE',
+					url: '/delete',
+					data: {_id: postId}
+				}).done((result) => {
+					$(e.currentTarget).parent('li').fadeOut();
+				});
+			});
+		</script>
 	</body>
 </html>
