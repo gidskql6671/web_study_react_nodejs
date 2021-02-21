@@ -54,7 +54,7 @@ const App = () => {
 				</Col>
 			</Row>
 			
-			{	isNotPc && <Image src="/images/profile.png" roundedCircle className="image-toggle-profile" onClick={
+			{	isNotPc && <Image src="images/profile.png" roundedCircle className="image-toggle-profile" onClick={
 							() => {setToggleProfile(prev => !prev);}}/>
 			}
 			{
@@ -75,7 +75,7 @@ const Profile = ({toggleImage = true, color = 'white'}) =>{
 	
 	return(
 		<div style={{color: color}}>
-			{ toggleImage && <Image src="/images/profile.png" roundedCircle className="image-profile mb-3" />}
+			{ toggleImage && <Image src="images/profile.png" roundedCircle className="image-profile mb-3" />}
 			<h4> 김동환 </h4>
 			<p> ASD AAA</p>
 		</div>

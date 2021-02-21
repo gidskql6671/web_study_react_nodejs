@@ -3,6 +3,8 @@ const path = require('path');
 const app = express();
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
+const cors = require('cors');
+
 const property = require('./properties.js');
 
 const dbLink = property.getDbLink();
@@ -10,16 +12,17 @@ let db;
 
 app.set('view engine', 'ejs');
 
+app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}))
 app.use( '/', express.static( path.join(__dirname, 'public') ));
 app.use( '/react', express.static( path.join(__dirname, 'client/build') ));
 
 
 app.get('/', (req, res) => {
-	res.sendFile( path.join(__dirname, 'index.html') );
+	res.sendFile( 'index.html' );
 });
 app.get('/react/*', (req, res) => {
-  res.sendFile( path.join(__dirname, 'client/build/index.html') );
+  res.sendFile( path.join(__dirname, '/client/build/index.html') );
 });
 app.post('/add', (req, res) => {
 	let postId = db.collection('counter').findOne({name: 'postId'}, (err, data) => {
