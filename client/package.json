@@ -28,6 +28,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "https://web-study.run.goorm.io/",
   "eslintConfig": {
     "extends": [
       "react-app",

@@ -61,6 +61,10 @@ app.get('/list', (req, res)=> {
 	
 	
 });
+app.get('/post', (req, res) => {
+	console.log("오");
+	res.send("zz");
+});
 
 
 MongoClient.connect(dbLink, {useNewUrlParser: true, useUnifiedTopology: true}, function(err, client){
