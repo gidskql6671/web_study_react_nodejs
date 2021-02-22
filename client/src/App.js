@@ -7,8 +7,8 @@ import { Link, Route, Switch } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 
 import Home from './Home.js';
-//let Detail = lazy(() => {return import('./Detail.js')});
-//let Post = lazy(() => {return import('./Post.js')});
+let Detail = lazy(() => {return import('./Detail.js')});
+let Post = lazy(() => {return import('./Post.js')});
 
 
 
@@ -26,26 +26,6 @@ const App = () => {
 	
 	return (
 		<div className="App">
-			hi
-		</div>
-		
-	);
-};
-
-/*
-const Profile = ({toggleImage = true, color = 'white'}) =>{
-	
-	return(
-		<div style={{color: color}}>
-			{ toggleImage && <Image src="images/profile.png" roundedCircle className="image-profile mb-3" />}
-			<h4> 김동환 </h4>
-			<p> ASD AAA</p>
-		</div>
-	);
-};
-
-
-
 			<Container fluid className="container-navbar">
 				<Navbar expand="md" variant="dark">
 					<Navbar.Brand as={Link} to="/"> Home </Navbar.Brand>
@@ -87,8 +67,23 @@ const Profile = ({toggleImage = true, color = 'white'}) =>{
 				</div>
 				: null
 			}
+		</div>
 		
-*/
+	);
+};
+
+
+const Profile = ({toggleImage = true, color = 'white'}) =>{
+	
+	return(
+		<div style={{color: color}}>
+			{ toggleImage && <Image src="images/profile.png" roundedCircle className="image-profile mb-3" />}
+			<h4> 김동환 </h4>
+			<p> ASD AAA</p>
+		</div>
+	);
+};
+
 
 
 export default App;

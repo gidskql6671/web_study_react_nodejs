@@ -11,7 +11,7 @@
 			<h3>
 				nodejs 연습
 			</h3>
-			<form action="/add" method="POST">
+			<form action="/post/add" method="POST">
 				<label
 					> Name : 
 					<input type="text" name="user_name" />
@@ -24,7 +24,7 @@
 				<button type="submit"> Submit </button>
 			</form>
 			<button onClick="deleteAll()"> DB 내용 전체 삭제 </button>
-			<button onClick="location.href='list'"> DB 내용 확인 </button>
+			<button onClick="location.href='/post/list'"> DB 내용 확인 </button>
 		</div>
 		
 		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -33,7 +33,7 @@
 			function deleteAll(i){
 				$.ajax({
 					method: 'DELETE',
-					url: '/deleteAll'
+					url: '/post/deleteAll'
 				}).done((result) => {
 
 				}).fail((err) => {

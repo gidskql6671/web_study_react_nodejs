@@ -8,9 +8,8 @@ const Post = () => {
 	return (
 		<div>
 			<button onClick={() => {
-					axios.get('/post')
+					axios.get('/api/post')
 					.then((data) => {setPosts(data)})
-					.catch((e) => {console.log(e)});
 				}}> Click me! </button>
 			<p> {posts} </p>
 		</div>
