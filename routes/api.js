@@ -6,13 +6,12 @@ module.exports = function(app){
 
 
 	router.get('/post', (req, res) => {
-		let db = req.app.db;
+		let db = req.app.locals.db;
 		
 		db.collection('post').find().toArray(function(err, data){
 			if (err) return console.log(err);
 			
-			console.log(data);
-			res.send("Z");
+			res.json(data);
 		})
 	});
 	

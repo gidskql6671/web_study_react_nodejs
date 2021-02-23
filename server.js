@@ -22,7 +22,7 @@ app.use( express.static( path.join(__dirname, 'public') ));
 /* 서버 라우터 설정 */
 app.use('/', indexRouter);
 app.use('/post', postRouter);
-app.use('/api/*', apiRouter);
+app.use('/api', apiRouter);
 
 
 MongoClient.connect(dbLink, {useNewUrlParser: true, useUnifiedTopology: true}, function(err, client){

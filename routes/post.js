@@ -9,7 +9,7 @@ module.exports = function(app){
 	})
 	
 	router.post('/add', (req, res) => {
-		let db = req.app.db;
+		let db = req.app.locals.db;
 		
 		let postId = db.collection('counter').findOne({name: 'postId'}, (err, data) => {
 			let postId = data.totalPost;
@@ -25,7 +25,7 @@ module.exports = function(app){
 
 	});
 	router.delete('/delete', (req, res) => {
-		let db = req.app.db;
+		let db = req.app.locals.db;
 		let postId = parseInt(req.body._id);
 
 		db.collection('post').deleteOne({_id: postId});
@@ -33,7 +33,7 @@ module.exports = function(app){
 	});
 
 	router.delete('/deleteAll', (req, res) => {
-		let db = req.app.db;
+		let db = req.app.locals.db;
 		
 		db.collection('post').deleteMany({});
 		db.collection('counter').updateOne({name: 'postId'}, {$set : {totalPost: 0}});
@@ -41,7 +41,7 @@ module.exports = function(app){
 		res.send("삭제 완료");
 	});
 	router.get('/list', (req, res)=> {
-		let db = req.app.db;
+		let db = req.app.locals.db;
 		
 		db.collection('post').find().toArray(function(err, data){
 			if (err) return console.log(err);
