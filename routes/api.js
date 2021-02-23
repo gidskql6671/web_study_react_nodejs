@@ -14,6 +14,11 @@ module.exports = function(app){
 			res.json(data);
 		})
 	});
+	router.get('/postlist/:page', (req, res) => {
+		let db = req.app.locals.db;
+		
+		//db.collection('post').find()
+	});
 	
 	
 	return router;
