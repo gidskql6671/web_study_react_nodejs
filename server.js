@@ -5,19 +5,15 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-// 프로퍼티 로더
-const property = require('./properties.js');
-
 
 /* Router import */
 const indexRouter = require('./routes/index');
-const postRouter = require('./routes/post')(app);
+const postRouter = require('./routes/post');
 const apiRouter = require('./routes/api')(app);
 
 
-/* mongoose Schma import */
-const Post = require('./model/post.js')(app);
-
+/* 프로퍼티 로더 */
+const property = require('./properties.js');
 const dbLink = property.getDbLink();
 const port = property.getServerPort();
 
@@ -42,8 +38,6 @@ mongoose.connect(dbLink, {
 })
 .then(() => {
 	console.log("Connected to MongoDB");
-	app.locals.db = mongoose;
-	app.locals.Post = Post;
 
 	const http = require('http').createServer(app);
 	http.listen(port, function() {
