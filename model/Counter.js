@@ -6,7 +6,9 @@ const Schema = mongoose.Schema;
 // Create Schema
 const counterSchema = new Schema({
 	name: String,
-	counter: Number
+	count: Number
+},{
+    versionKey: false 
 });
 
 // Schema를 사용하는 모델 생성

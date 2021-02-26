@@ -9,7 +9,7 @@ const cors = require('cors');
 /* Router import */
 const indexRouter = require('./routes/index');
 const postRouter = require('./routes/post');
-const apiRouter = require('./routes/api')(app);
+const apiRouter = require('./routes/api');
 
 
 /* 프로퍼티 로더 */
@@ -31,6 +31,8 @@ app.use('/', indexRouter);
 app.use('/post', postRouter);
 app.use('/api', apiRouter);
 
+
+mongoose.set('useFindAndModify', false);
 
 mongoose.connect(dbLink, {
 	useNewUrlParser: true,
