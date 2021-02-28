@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Row, Col, Button, Spinner } from 'react-bootstrap';
 
-import './About.scss';
+import 'scss/About.scss';
 
 
 const About = () => {

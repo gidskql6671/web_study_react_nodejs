@@ -2,11 +2,12 @@
 
 import React, {useState, lazy, Suspense } from 'react';
 import { Nav, Container, Navbar, Row, Col, Image, Spinner, Button } from 'react-bootstrap';
-import './App.scss';
 import { Link, Route, Switch } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
+
+import 'scss/App.scss';
 
 import Home from './Home.js';
 let Post = lazy(() => {return import('./Post.js')});
