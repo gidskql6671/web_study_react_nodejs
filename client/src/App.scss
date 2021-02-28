@@ -1,24 +1,24 @@
-$navbar-color: #393e46;
-$content-color: #ffd369;
-$background-color: #222831;
-
+@import "init.scss";
 
 .container-navbar{
-	background-color: #393e46;
+	border-bottom: 4px solid $dark-color;
+	color: $font-color;
 	
-	.nav-link{
-		color: white;
-	
-		&:hover{
-			color: white;
+	.navbar-collapse {
+		.nav-link{
+			margin-right: 25px;
+			color: $font-color;
+		}
+		#github-icon{
+			font-size: 1.5rem;
+		}
 	}
-}
 }
 
 
 .container-main{
 	margin-top: 30px;
-	height: 1200px;
+	height: 2400px;
 	
 	.container-profile {
 		width: 100%;
@@ -27,13 +27,14 @@ $background-color: #222831;
 		
 		&>div{
 			padding: 20px 10px;
-			border: 3px dashed white;
+			border: 3px dashed #393e46;
 			border-radius: 10px;
 		}
 	}
 	
 	.container-content{
 		padding: 0 40px;
+		margin: 0px 40px;
 	}
 }
 
@@ -50,7 +51,7 @@ $background-color: #222831;
 	z-index: 1;
 }
 .container-profile-mini{
-	background: $navbar-color;
+	background-color: $bright-color;
 	padding: 20px;
 	
 	position: fixed;
@@ -64,7 +65,7 @@ $background-color: #222831;
 
 .arrow_box {
 	width: 200px;
-	border: 4px solid $content-color;
+	border: 4px solid $dark-color;
 	border-radius: 5px;
 }
 .arrow_box:after, .arrow_box:before {
@@ -79,14 +80,14 @@ $background-color: #222831;
 }
 
 .arrow_box:after {
-	border-color: rgba(57, 62, 70, 0);
-	border-top-color: $navbar-color;
+	border-color: rgba(249, 247, 232, 0);
+	border-top-color: $bright-color;
 	border-width: 30px;
 	margin-left: -30px;
 }
 .arrow_box:before {
-	border-color: rgba(255, 211, 105, 0);
-	border-top-color: $content-color;
+	border-color: rgba(57, 62, 70, 0);
+	border-top-color: $dark-color;
 	border-width: 36px;
 	margin-left: -36px;
 }

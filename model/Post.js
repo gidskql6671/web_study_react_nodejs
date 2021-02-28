@@ -2,14 +2,27 @@
 
 const mongoose = require('mongoose');
 
-// Create Schema
+
+/* Create Schema */
 const postSchema = new mongoose.Schema({
-	_id: Number,
-	name: String,
-	age: Number
+	_id: {
+		type: Number,
+		required: true
+	},
+	title: {
+		type: String,
+		required: true
+	},
+	content: String,
+	created:{
+		type: Date,
+		default: Date.now
+   }
 },{
     versionKey: false 
 });
+
+
 
 // Schema를 사용하는 모델 생성
 const Post = mongoose.model('Post', postSchema);

@@ -13,10 +13,18 @@
 			</h2>
 			
 			<ul>
+				
 			<% for(let i = 0; i < posts.length; i++){ %>
-				<li> <span> <%= posts[i].name %> : {age : <%= posts[i].age %>, _id : <%= posts[i]._id %> } </span>  
+				<li> 
+					<p> Title: <%= posts[i].title %> </p>
+					<p> created : <%= moment(posts[i].created).format('YYYY-MM-DD hh:mm') %> </p>
+					<p> id : <%= posts[i]._id %> </p>
+					<div style="width: 400px; border: 2px solid black; border-radius: 2px; padding: 10px;">
+						<p> <%= posts[i].content %> </p>
+					</div>
 					<button class="btn-delete-post" data-id="<%= posts[i]._id %>"> 글 삭제 </button> </li>
 			<% } %>
+				
 			</ul>
 			
 			<button onclick="history.back()">Back</button>
@@ -32,7 +40,7 @@
 				$.ajax({
 					method: 'DELETE',
 					url: '/post/delete',
-					data: {_id: postId}
+					data: {id: postId}
 				}).done((result) => {
 					$(e.currentTarget).parent('li').fadeOut();
 				});

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Card, ListGroup, Button } from 'react-bootstrap';
 
@@ -7,23 +7,23 @@ const Post = () => {
 	let [posts, setPosts] = useState([]);
 	const style = {color: "black", width: "18rem"};
 	
+	useEffect(() => {
+		axios.get('/api/post')
+		.then((res) => {
+			console.log(res);
+			setPosts(res.data);
+		})
+	}, []);
+	
 	return (
 		<div>
-			<button onClick={() => {
-					axios.get('/api/post')
-					.then(({ data }) => { 
-						console.log(data);
-						setPosts(data);
-						
-					})
-				}}> Click me! </button>
 			<Card style={style}>
 				<Card.Header>Database Items</Card.Header>
 				<ListGroup variant="flush">
 					{
 						posts.map((post, i) =>{
 							return <ListGroup.Item key={i}>
-								<MyCard id={post._id} name={post.name} age={post.age} />
+								<MyCard id={post.id} name={post.name} age={post.age} />
 							</ListGroup.Item>
 						})
 					}

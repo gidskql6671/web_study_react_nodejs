@@ -32,11 +32,11 @@ app.use('/post', postRouter);
 app.use('/api', apiRouter);
 
 
-mongoose.set('useFindAndModify', false);
-
 mongoose.connect(dbLink, {
 	useNewUrlParser: true,
 	useCreateIndex: true,
+	useFindAndModify: false,
+	useUnifiedTopology: true
 })
 .then(() => {
 	console.log("Connected to MongoDB");

@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const db = mongoose.connection;
+const moment = require('moment');
 
 // mongoose Post Model 생성
 const Post = require('../model/Post.js');
@@ -20,22 +21,24 @@ router.post('/add', (req, res) => {
  		counterOptions = { upsert: true };
 	
 	Counter.findOneAndUpdate( counterQuery, counterUpdate, counterOptions).exec()
-		.then( ( {count} ) => {
-			Post.create({ _id: count, name: req.body.user_name, age: req.body.user_age })
-				.then( (data) => { 
-					console.log(data); 
-					res.redirect('/');
-				})
-				.catch( err => res.send("Post Create Error : " + err) );
+	.then( ( {count} ) => {
+		const newPost = { _id: count, title: req.body.title, content: req.body.content };
+		
+		Post.create(newPost)
+		.then( (data) => { 
+			console.log(data); 
+			res.redirect('/');
+		})
+		.catch( err => res.send("Post Create Error : " + err) );
 	})	
-		.catch( err => res.send("Counter FindOneAndUpdate Error : " + err));
+	.catch( err => res.send("Counter FindOneAndUpdate Error : " + err));
 	
 
 });
 
 /* request로 온 id를 가진 Post를 지운다 */
 router.delete('/delete', (req, res) => {
-	let postId = parseInt(req.body._id);
+	let postId = parseInt(req.body.id);
 	
 	Post.deleteOne({_id: postId}, (err, data) => {
 		if (err) 
@@ -77,7 +80,7 @@ router.get('/list', (req, res)=> {
 		if (err) return err;
 		
 		console.log(posts);
-		res.render('list', {posts: posts});
+		res.render('list', {posts: posts, moment});
 	});
 	
 	/* 아니면 exec()를 붙여서 Promise로 만들어주자 */

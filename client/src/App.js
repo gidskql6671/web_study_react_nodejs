@@ -1,14 +1,16 @@
 /* eslint-disable */
 
 import React, {useState, lazy, Suspense } from 'react';
-import { Nav, Container, Navbar, Row, Col, Image, Spinner } from 'react-bootstrap';
+import { Nav, Container, Navbar, Row, Col, Image, Spinner, Button } from 'react-bootstrap';
 import './App.scss';
 import { Link, Route, Switch } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 import Home from './Home.js';
-let Detail = lazy(() => {return import('./Detail.js')});
 let Post = lazy(() => {return import('./Post.js')});
+let About = lazy(() => {return import('./About.js')});
 
 
 
@@ -27,13 +29,15 @@ const App = () => {
 	return (
 		<div className="App">
 			<Container fluid className="container-navbar">
-				<Navbar expand="md" variant="dark">
+				<Navbar expand="md">
 					<Navbar.Brand as={Link} to="/"> Home </Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="ml-auto">
-							<Nav.Link as={Link} to="/detail">Detail</Nav.Link>
+							<Nav.Link as={Link} to="/achievement">Achieves</Nav.Link>
 							<Nav.Link as={Link} to="/post">Post</Nav.Link>
+							<Nav.Link as={Link} to="/about">About</Nav.Link>
+							<Nav.Link href="https://github.com/gidskql6671"><FontAwesomeIcon id="github-icon" icon={faGithub} /></Nav.Link>
 						</Nav>
 					</Navbar.Collapse>
 				</Navbar>
@@ -49,8 +53,8 @@ const App = () => {
 					<Suspense fallback={ <div className="text-center"> <Spinner animation="border" /> </div> }>
 						<Switch>
 							<Route exact path="/" component={Home} />
-							<Route path="/detail" component={Detail} />
 							<Route path="/post" component={Post} />
+							<Route path="/about" component={About} />
 						</Switch>
 					</Suspense>
 				</Col>
@@ -73,7 +77,7 @@ const App = () => {
 };
 
 
-const Profile = ({toggleImage = true, color = 'white'}) =>{
+const Profile = ({toggleImage = true, color = '#222222'}) =>{
 	
 	return(
 		<div style={{color: color}}>
