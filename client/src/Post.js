@@ -23,7 +23,7 @@ const Post = () => {
 					{
 						posts.map((post, i) =>{
 							return <ListGroup.Item key={i}>
-								<MyCard id={post.id} name={post.name} age={post.age} />
+								<MyCard id={post._id} name={post.title} age={post.content} />
 							</ListGroup.Item>
 						})
 					}

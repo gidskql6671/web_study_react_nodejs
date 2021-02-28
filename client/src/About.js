@@ -13,14 +13,14 @@ const About = () => {
 			<div>
 				<h4 class="summary"> 요약~ </h4>
 				<Row>
-					<Col md={6}>
-						<h5> 한것들 </h5>
+					<Col md={6} class="activity">
+						<h5> activity </h5>
 						<ul>
 							<li> 나중에 axios로 구현</li>
 						</ul>
 					</Col>
-					<Col md={6}>
-						<h5> 관심 분야</h5>
+					<Col md={6} class="interest">
+						<h5> Interests </h5>
 						<ul>
 							<li> 나중에 axios로 구현 </li>
 						</ul>
