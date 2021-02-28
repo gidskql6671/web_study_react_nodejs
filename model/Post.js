@@ -25,7 +25,7 @@ const postSchema = new mongoose.Schema({
 
 
 // Schema를 사용하는 모델 생성
-const Post = mongoose.model('Post', postSchema);
+const Post = mongoose.model('webStudyPost', postSchema);
 
 
 module.exports = Post;

@@ -12,7 +12,7 @@ const counterSchema = new Schema({
 });
 
 // Schema를 사용하는 모델 생성
-const Counter = mongoose.model('Counter', counterSchema);
+const Counter = mongoose.model('webStudyCounter', counterSchema);
 
 
 module.exports = Counter;
