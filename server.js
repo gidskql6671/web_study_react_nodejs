@@ -7,9 +7,9 @@ const cors = require('cors');
 
 
 /* Router import */
-const indexRouter = require('./routes/index');
-const postRouter = require('./routes/post');
-const apiRouter = require('./routes/api');
+const indexRouter = require('./lib/routes/index');
+const postRouter = require('./lib/routes/post');
+const apiRouter = require('./lib/routes/api');
 
 
 /* 프로퍼티 로더 */
@@ -18,12 +18,12 @@ const dbLink = property.getDbLink();
 const port = property.getServerPort();
 
 
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs'); // view engine을 ejs로 설정
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}))
-app.use( express.static( path.join(__dirname, 'public') ));
+app.use( express.static( path.join(__dirname, 'public') ));  // static file들을 public 폴더에서 찾게 함.
 
 
 /* 서버 라우터 설정 */
