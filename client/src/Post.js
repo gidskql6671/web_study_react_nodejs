@@ -17,6 +17,8 @@ const Post = () => {
 	
 	return (
 		<div>
+			<h2> Post </h2>
+			<hr className="hr-headline"/>
 			<Card style={style}>
 				<Card.Header>Database Items</Card.Header>
 				<ListGroup variant="flush">
