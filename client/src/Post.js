@@ -3,17 +3,28 @@ import axios from 'axios';
 import { Button } from 'react-bootstrap';
 
 
-const Post = () => {
+const Post = ( {match} ) => {
 	let [posts, setPosts] = useState([]);
 	const style = {color: "black", width: "18rem"};
 	
+	
 	useEffect(() => {
-		axios.get('/api/post')
-		.then((res) => {
-			console.log(res);
-			setPosts(res.data);
-		})
+		if (match.params.page){
+			axios.get('/api/post/' + match.params.page)
+			.then((res) => {
+				console.log(res);
+				setPosts(res.data);
+			});
+		}
+		else{
+			axios.get('/api/post/1')
+			.then((res) => {
+				console.log(res);
+				setPosts(res.data);
+			});
+		}
 	}, []);
+	
 	
 	return (
 		<div>
