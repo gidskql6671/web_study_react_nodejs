@@ -1,44 +1,64 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
+import 'scss/Post.scss';
 
 const Post = ( {match} ) => {
 	let [posts, setPosts] = useState([]);
+	let [maxPage, setMaxPage] = useState(1);
+	let [pages, setPages] = useState([]);
 	const style = {color: "black", width: "18rem"};
+	let currentPage = match.params.page ?  parseInt(match.params.page): 1;
 	
 	
 	useEffect(() => {
-		if (match.params.page){
-			axios.get('/api/post/' + match.params.page)
+		axios.get('/api/post/pageCount')
+		.then(( {data} ) =>{
+			let maxPage = data.count;
+			
+			setMaxPage( maxPage );
+			
+			// 페이지 버튼? 구현중... 나중에 인터넷 찾아봐서 더 잘 만들어보자.
+			let pageIndex = parseInt((currentPage - 1) / 5); // page의 인덱스를 나타냄. 1~5까지가 0번째, 6~10까지가 1번째
+			const pageElements = [];
+			
+			for (let i = pageIndex * 5 + 1; i <= (pageIndex + 1) * 5 && i <= maxPage; i++)
+				pageElements.push(i);
+			setPages(pageElements);
+		})
+		.catch(err => console.log("fecth pageCount error"));
+		
+		axios.get('/api/post/page/' + currentPage)
 			.then((res) => {
-				console.log(res);
 				setPosts(res.data);
 			});
-		}
-		else{
-			axios.get('/api/post/1')
-			.then((res) => {
-				console.log(res);
-				setPosts(res.data);
-			});
-		}
-	}, []);
+		
+		console.log("rendering");
+	}, [match.params.page]);
 	
 	
 	return (
 		<div>
 			<h2> Post </h2>
 			<hr className="hr-headline"/>
-				<ul>
+			<ul>
+			{
+				posts.map((post, i) =>{
+					return <li key={i}>
+						<MyCard id={post._id} name={post.title} age={post.content} />
+					</li>
+				})
+			}
+			</ul>
+			<div className="container-pages">
 				{
-					posts.map((post, i) =>{
-						return <li key={i}>
-							<MyCard id={post._id} name={post.title} age={post.content} />
-						</li>
+					pages.map((page, i) =>{
+						return <Link key={i} to={`/post/page/${i+1}`}><Button> {page} </Button></Link>
 					})
 				}
-				</ul>
+			</div>
 		</div>
 	);
 };

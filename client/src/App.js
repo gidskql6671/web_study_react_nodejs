@@ -54,7 +54,7 @@ const App = () => {
 					<Suspense fallback={ <div className="text-center"> <Spinner animation="border" /> </div> }>
 						<Switch>
 							<Route exact path="/" component={Home} />
-							<Route path="/post/:page" component={Post} />
+							<Route path="/post/page/:page" component={Post} />
 							<Route path="/post" component={Post} />
 							<Route path="/about" component={About} />
 						</Switch>
