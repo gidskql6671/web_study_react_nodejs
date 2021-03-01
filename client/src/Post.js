@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Card, ListGroup, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 
 const Post = () => {
@@ -19,18 +19,15 @@ const Post = () => {
 		<div>
 			<h2> Post </h2>
 			<hr className="hr-headline"/>
-			<Card style={style}>
-				<Card.Header>Database Items</Card.Header>
-				<ListGroup variant="flush">
-					{
-						posts.map((post, i) =>{
-							return <ListGroup.Item key={i}>
-								<MyCard id={post._id} name={post.title} age={post.content} />
-							</ListGroup.Item>
-						})
-					}
-				</ListGroup>
-			</Card>
+				<ul>
+				{
+					posts.map((post, i) =>{
+						return <li key={i}>
+							<MyCard id={post._id} name={post.title} age={post.content} />
+						</li>
+					})
+				}
+				</ul>
 		</div>
 	);
 };
@@ -40,6 +37,7 @@ const MyCard = ({id, name, age}) => {
 		<p> {id} </p>
 		<h4> {name} </h4>
 		<p> {age}살 </p>
+		<hr />
 	</div>
 }
 
