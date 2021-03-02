@@ -10,10 +10,9 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import 'scss/App.scss';
 
 import Home from './Home.js';
-let Post = lazy(() => {return import('./Post.js')});
-let About = lazy(() => {return import('./About.js')});
-
-
+import PageNotFound from './PageNotFound.js';
+const Post = lazy(() => {return import('./Post.js')});
+const About = lazy(() => {return import('./About.js')});
 
 
 const App = () => {
@@ -57,6 +56,7 @@ const App = () => {
 							<Route path="/post/page/:page" component={Post} />
 							<Route path="/post" component={Post} />
 							<Route path="/about" component={About} />
+							<Route component={PageNotFound} />
 						</Switch>
 					</Suspense>
 				</Col>
