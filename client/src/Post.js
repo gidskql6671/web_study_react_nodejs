@@ -24,8 +24,10 @@ const Post = ( {match} ) => {
 			let pageIndex = parseInt((currentPage - 1) / 5); // page의 인덱스를 나타냄. 1~5까지가 0번째, 6~10까지가 1번째
 			const pageElements = [];
 			
+			pageElements.push({ name: "left" ,value: pageIndex * 5})
 			for (let i = pageIndex * 5 + 1; i <= (pageIndex + 1) * 5 && i <= maxPage; i++)
-				pageElements.push(i);
+				pageElements.push({ name: "page" ,value: i});
+			pageElements.push({ name: "right" ,value: (pageIndex + 1) * 5 + 1})
 			setPages(pageElements);
 		})
 		.catch(err => console.log("fecth pageCount error"));
@@ -55,7 +57,14 @@ const Post = ( {match} ) => {
 			<div className="container-pages">
 				{
 					pages.map((page, i) =>{
-						return <Link key={i} to={`/post/page/${i+1}`}><Button> {page} </Button></Link>
+						if (page.name == 'left'){
+							return <Link key={i} to={`/post/page/${page.value}`} className="pagination-post"><Button> &#xE000; </Button></Link>	
+						}
+						else if (page.name == 'right'){
+							return <Link key={i} to={`/post/page/${page.value}`} className="pagination-post"><Button>  &#xE001; </Button></Link>	
+						}	
+						
+						return <Link key={i} to={`/post/page/${page.value}`} className="pagination-post"><Button> {page.value} </Button></Link>		
 					})
 				}
 			</div>
