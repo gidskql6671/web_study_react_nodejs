@@ -1,45 +1,58 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Button, Spinner } from 'react-bootstrap';
 
 import 'scss/Post.scss';
+import { Pagination } from './';
 
 const Post = ( {match} ) => {
-	let [posts, setPosts] = useState([]);
-	let [maxPage, setMaxPage] = useState(1);
-	let [pages, setPages] = useState([]);
-	const style = {color: "black", width: "18rem"};
-	let currentPage = match.params.page ?  parseInt(match.params.page): 1;
+	let [posts, setPosts] = useState([]); // post 데이터
+	let [totalPosts, setTotalPosts] = useState(1); // post 데이터의 총 개수
+	let [currentPage, setCurrentPage] = useState(1); // 현재 페이지
+	let [currentPosts, setCurrentPosts] = useState([]);
+	let postsPerPage = 10; // 한 페이지당 post를 몇개를 보여줄 것인가.
 	
+	const style = {color: "black", width: "18rem"};
+	
+	const paginate = (pageNumber) => setCurrentPage(pageNumber);
 	
 	useEffect(() => {
-		axios.get('/api/post/pageCount')
+		if (match.params.page)
+			setCurrentPage(match.params.page);
+		
+		// 
+		axios.get('/api/post/count')
 		.then(( {data} ) =>{
-			let maxPage = data.count;
+			let totalPosts = data.count;
 			
-			setMaxPage( maxPage );
-			
-			// 페이지 버튼? 구현중... 나중에 인터넷 찾아봐서 더 잘 만들어보자.
-			let pageIndex = parseInt((currentPage - 1) / 5); // page의 인덱스를 나타냄. 1~5까지가 0번째, 6~10까지가 1번째
-			const pageElements = [];
-			
-			pageElements.push({ name: "left" ,value: pageIndex * 5})
-			for (let i = pageIndex * 5 + 1; i <= (pageIndex + 1) * 5 && i <= maxPage; i++)
-				pageElements.push({ name: "page" ,value: i});
-			pageElements.push({ name: "right" ,value: (pageIndex + 1) * 5 + 1})
-			setPages(pageElements);
+			setTotalPosts( totalPosts );
 		})
-		.catch(err => console.log("fecth pageCount error"));
+		.catch(err => console.log("fecth count error"));
 		
-		axios.get('/api/post/page/' + currentPage)
-			.then((res) => {
-				setPosts(res.data);
-			});
+		// 전체 다 가져오기
+		axios.get('/api/post')
+		.then((res) => {
+			setPosts(res.data);
+		})
 		
-		console.log("rendering");
-	}, [match.params.page]);
+		
+		// 일정 개수만큼 가져오기
+		// axios.get('/api/post/page/' + currentPage, {params: {count: postsPerPage}})
+		// .then((res) => {
+		// 	setPosts(res.data);
+		// });
+	}, []);
 	
+	useEffect(() => {
+		const indexOfLastPost = currentPage * postsPerPage; // 마지막 Post의 index 번호
+		const indexOfFirstPost = indexOfLastPost - postsPerPage; // 첫번째 Post의 index 번호
+		const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost); // slice로 필요한 데이터만 잘라온다.
+		
+		console.log(currentPosts);
+		
+		setCurrentPosts(currentPosts)
+	}, [currentPage, posts]);
 	
 	return (
 		<div>
@@ -47,27 +60,14 @@ const Post = ( {match} ) => {
 			<hr className="hr-headline"/>
 			<ul>
 			{
-				posts.map((post, i) =>{
+				currentPosts.map((post, i) =>{
 					return <li key={i}>
 						<MyCard id={post._id} name={post.title} age={post.content} />
 					</li>
 				})
 			}
 			</ul>
-			<div className="container-pages">
-				{
-					pages.map((page, i) =>{
-						if (page.name == 'left'){
-							return <Link key={i} to={`/post/page/${page.value}`} className="pagination-post"><Button> &#xE000; </Button></Link>	
-						}
-						else if (page.name == 'right'){
-							return <Link key={i} to={`/post/page/${page.value}`} className="pagination-post"><Button>  &#xE001; </Button></Link>	
-						}	
-						
-						return <Link key={i} to={`/post/page/${page.value}`} className="pagination-post"><Button> {page.value} </Button></Link>		
-					})
-				}
-			</div>
+			<Pagination  postsPerPage={postsPerPage} totalPosts={totalPosts} currentPage={currentPage} paginate={paginate} />
 		</div>
 	);
 };
