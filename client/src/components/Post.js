@@ -10,7 +10,8 @@ const Post = ( {match} ) => {
 	let [posts, setPosts] = useState([]); // post 데이터
 	let [totalPosts, setTotalPosts] = useState(1); // post 데이터의 총 개수
 	let [currentPage, setCurrentPage] = useState(1); // 현재 페이지
-	let [currentPosts, setCurrentPosts] = useState([]);
+	let [currentPosts, setCurrentPosts] = useState([]); // 현재 페이지에서 보여줄 post 데이터
+	let [isLoading, setIsLoading] = useState(true);
 	let postsPerPage = 5; // 한 페이지당 post를 몇개를 보여줄 것인가.
 	
 	const style = {color: "black", width: "18rem"};
@@ -49,9 +50,24 @@ const Post = ( {match} ) => {
 		const indexOfFirstPost = indexOfLastPost - postsPerPage; // 첫번째 Post의 index 번호
 		const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost); // slice로 필요한 데이터만 잘라온다.
 		
-		setCurrentPosts(currentPosts)
+		if (currentPosts.length){
+			setIsLoading(false);
+			setCurrentPosts(currentPosts)
+		}
 	}, [currentPage, posts]);
 	
+	
+	if (isLoading)
+		return(
+			<div>
+				<h2> Post </h2>
+				<hr className="hr-headline"/>
+				<div style={{textAlign: "center"}}>
+					<Spinner animation="border"/>
+				</div>
+			</div>
+		);
+		
 	return (
 		<div>
 			<h2> Post </h2>
@@ -60,21 +76,21 @@ const Post = ( {match} ) => {
 			{
 				currentPosts.map((post, i) =>{
 					return <li key={i}>
-						<MyCard id={post._id} name={post.title} age={post.content} />
+						<MyCard id={post._id} title={post.title} content={post.content} />
 					</li>
 				})
 			}
 			</ul>
-			<Pagination  postsPerPage={postsPerPage} totalPosts={totalPosts} currentPage={currentPage} paginate={paginate} />
+			<Pagination  postsPerPage={postsPerPage} totalPosts={totalPosts} currentPage={currentPage} paginate={paginate} isLoading={isLoading} />
 		</div>
 	);
 };
 
-const MyCard = ({id, name, age}) => {
+const MyCard = ({id, title, content}) => {
 	return <div>
 		<p> {id} </p>
-		<h4> {name} </h4>
-		<p> {age}살 </p>
+		<h4> {title} </h4>
+		<p> {content} </p>
 		<hr />
 	</div>
 }
