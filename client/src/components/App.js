@@ -9,11 +9,11 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 import 'scss/App.scss';
 
-import Home from 'src/components/Home.js';
-import PageNotFound from 'src/components/PageNotFound.js';
-import PostPage from 'src/components/PostPage.js';
-import About from 'src/components/About.js';
-import Postcontent from 'src/components/Postcontent.js';
+import { Home } from 'components';
+import { PageNotFound } from 'components';
+import { About } from 'components';
+import { PostPage } from 'components';
+import { PostContent } from 'components';
 
 
 const App = () => {

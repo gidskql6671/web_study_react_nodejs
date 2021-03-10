@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Button, Spinner } from 'react-bootstrap';
 
 import 'scss/PostPage.scss';
-import { Pagination } from './';
+import { Pagination } from 'components';
 
 const PostPage = ( {match} ) => {
 	let [posts, setPosts] = useState([]); // post 데이터
