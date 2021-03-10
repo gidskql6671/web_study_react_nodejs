@@ -39,6 +39,8 @@ const Pagination = ( { postsPerPage = 10, totalPosts, currentPage, paginate } ) 
 			start_index = totalPages - 6;
 		}
 		
+		console.log(start_index, currentPage, end_index);
+		
 		for(let i = start_index; i <= end_index; i++)
 			pages.push(i);
 		
@@ -50,7 +52,10 @@ const Pagination = ( { postsPerPage = 10, totalPosts, currentPage, paginate } ) 
 	return <div className="pagination-post"><ul >
 		{
 			pageNumbers.map((page) => {
-				return <li key={page} > <Button key={page} onClick={() => { paginate(page) }}> {page} </Button> </li>
+				let style = {backgroundColor: "#007bff"};
+				if (page == currentPage)
+					style = {...style, backgroundImage: "linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) )" }
+				return <li key={page} > <Link to={"/post/page/" + page}> <Button key={page} onClick={() => { paginate(page) }} style={style}> {page} </Button> </Link> </li>
 			})
 		}
 	</ul></div>

@@ -11,5 +11,16 @@
 		padding: 0px;
 		display: inline-flex;
 		list-style:none;
+		
+		
+		li{
+			margin-left: 2px;
+			margin-right: 2px;
+			
+		}
+		
+		.btn{
+			width: 2.5rem;
+		}
 	}
 }

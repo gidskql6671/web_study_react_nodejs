@@ -15,11 +15,11 @@ const Post = ( {match} ) => {
 	
 	const style = {color: "black", width: "18rem"};
 	
-	const paginate = (pageNumber) => setCurrentPage(pageNumber);
+	const paginate = (pageNumber) => {setCurrentPage(pageNumber)};
 	
 	useEffect(() => {
 		if (match.params.page)
-			setCurrentPage(match.params.page);
+			setCurrentPage(parseInt(match.params.page));
 		
 		// 
 		axios.get('/api/post/count')
