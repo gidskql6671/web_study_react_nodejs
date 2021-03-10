@@ -3,10 +3,10 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Button, Spinner } from 'react-bootstrap';
 
-import 'scss/Post.scss';
+import 'scss/PostPage.scss';
 import { Pagination } from './';
 
-const Post = ( {match} ) => {
+const PostPage = ( {match} ) => {
 	let [posts, setPosts] = useState([]); // post 데이터
 	let [totalPosts, setTotalPosts] = useState(1); // post 데이터의 총 개수
 	let [currentPage, setCurrentPage] = useState(1); // 현재 페이지
@@ -76,7 +76,7 @@ const Post = ( {match} ) => {
 			{
 				currentPosts.map((post, i) =>{
 					return <li key={i}>
-						<MyCard id={post._id} title={post.title} content={post.content} />
+						<Post id={post._id} title={post.title} content={post.content} />
 					</li>
 				})
 			}
@@ -86,8 +86,8 @@ const Post = ( {match} ) => {
 	);
 };
 
-const  = ({id, title, content}) => {
-	return <div className="post">
+const Post = ({id, title, content}) => {
+	return <div className="Post">
 		<p> {id} </p>
 		<Link to="/post/content/:id">
 			<h4> {title} </h4>
@@ -98,4 +98,4 @@ const  = ({id, title, content}) => {
 }
 
 
-export default Post;
+export default PostPage;
