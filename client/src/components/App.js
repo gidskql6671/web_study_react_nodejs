@@ -11,7 +11,7 @@ import 'scss/App.scss';
 
 import Home from './Home.js';
 import PageNotFound from './PageNotFound.js';
-const Post = lazy(() => {return import('./Post.js')});
+const PostPage = lazy(() => {return import('./PostPage.js')});
 const About = lazy(() => {return import('./About.js')});
 
 
@@ -53,8 +53,8 @@ const App = () => {
 					<Suspense fallback={ <div className="text-center"> <Spinner animation="border" /> </div> }>
 						<Switch>
 							<Route exact path="/" component={Home} />
-							<Route path="/post/page/:page" component={Post} />
-							<Route path="/post" component={Post} />
+							<Route path="/post/page/:page" component={PostPage} />
+							<Route path="/post" component={PostPage} />
 							<Route path="/about" component={About} />
 							<Route component={PageNotFound} />
 						</Switch>

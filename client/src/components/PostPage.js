@@ -11,7 +11,7 @@ const Post = ( {match} ) => {
 	let [totalPosts, setTotalPosts] = useState(1); // post 데이터의 총 개수
 	let [currentPage, setCurrentPage] = useState(1); // 현재 페이지
 	let [currentPosts, setCurrentPosts] = useState([]); // 현재 페이지에서 보여줄 post 데이터
-	let [isLoading, setIsLoading] = useState(true);
+	let [isLoading, setIsLoading] = useState(true); // 현재 데이터를 불러오는 중인가?
 	let postsPerPage = 5; // 한 페이지당 post를 몇개를 보여줄 것인가.
 	
 	const style = {color: "black", width: "18rem"};
@@ -86,11 +86,13 @@ const Post = ( {match} ) => {
 	);
 };
 
-const MyCard = ({id, title, content}) => {
-	return <div>
+const  = ({id, title, content}) => {
+	return <div className="post">
 		<p> {id} </p>
-		<h4> {title} </h4>
-		<p> {content} </p>
+		<Link to="/post/content/:id">
+			<h4> {title} </h4>
+			<p> {content} </p>
+		</Link>
 		<hr />
 	</div>
 }
