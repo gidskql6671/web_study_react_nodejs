@@ -39,8 +39,6 @@ const Pagination = ( { postsPerPage = 10, totalPosts, currentPage, paginate } ) 
 			start_index = totalPages - 6;
 		}
 		
-		console.log(start_index, currentPage, end_index);
-		
 		for(let i = start_index; i <= end_index; i++)
 			pages.push(i);
 		
