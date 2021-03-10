@@ -1,0 +1,15 @@
+@import "config.scss";
+
+.pagination-post{
+	width: 100%;
+	text-align: center;
+	
+	ul{
+		margin-left: auto;
+		margin-right: auto;
+		
+		padding: 0px;
+		display: inline-flex;
+		list-style:none;
+	}
+}

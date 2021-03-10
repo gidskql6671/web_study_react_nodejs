@@ -11,7 +11,7 @@ const Post = ( {match} ) => {
 	let [totalPosts, setTotalPosts] = useState(1); // post 데이터의 총 개수
 	let [currentPage, setCurrentPage] = useState(1); // 현재 페이지
 	let [currentPosts, setCurrentPosts] = useState([]);
-	let postsPerPage = 10; // 한 페이지당 post를 몇개를 보여줄 것인가.
+	let postsPerPage = 5; // 한 페이지당 post를 몇개를 보여줄 것인가.
 	
 	const style = {color: "black", width: "18rem"};
 	
@@ -48,8 +48,6 @@ const Post = ( {match} ) => {
 		const indexOfLastPost = currentPage * postsPerPage; // 마지막 Post의 index 번호
 		const indexOfFirstPost = indexOfLastPost - postsPerPage; // 첫번째 Post의 index 번호
 		const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost); // slice로 필요한 데이터만 잘라온다.
-		
-		console.log(currentPosts);
 		
 		setCurrentPosts(currentPosts)
 	}, [currentPage, posts]);
