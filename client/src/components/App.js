@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import React, {useState, lazy, Suspense } from 'react';
+import React, { useState } from 'react';
 import { Nav, Container, Navbar, Row, Col, Image, Spinner, Button } from 'react-bootstrap';
 import { Link, Route, Switch } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
@@ -9,10 +9,10 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 import 'scss/App.scss';
 
-import Home from './Home.js';
-import PageNotFound from './PageNotFound.js';
-const PostPage = lazy(() => {return import('./PostPage.js')});
-const About = lazy(() => {return import('./About.js')});
+import Home from 'src/components/Home.js';
+import PageNotFound from 'src/components/PageNotFound.js';
+import PostPage from 'src/components/PostPage.js'
+import About from 'src/components/About.js'
 
 
 const App = () => {
