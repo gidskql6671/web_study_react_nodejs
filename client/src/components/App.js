@@ -11,8 +11,9 @@ import 'scss/App.scss';
 
 import Home from 'src/components/Home.js';
 import PageNotFound from 'src/components/PageNotFound.js';
-import PostPage from 'src/components/PostPage.js'
-import About from 'src/components/About.js'
+import PostPage from 'src/components/PostPage.js';
+import About from 'src/components/About.js';
+import Postcontent from 'src/components/Postcontent.js';
 
 
 const App = () => {
@@ -50,15 +51,13 @@ const App = () => {
 					</Col>
 				}
 				<Col className="container-content">	
-					<Suspense fallback={ <div className="text-center"> <Spinner animation="border" /> </div> }>
-						<Switch>
-							<Route exact path="/" component={Home} />
-							<Route path="/post/page/:page" component={PostPage} />
-							<Route path="/post" component={PostPage} />
-							<Route path="/about" component={About} />
-							<Route component={PageNotFound} />
-						</Switch>
-					</Suspense>
+					<Switch>
+						<Route exact path="/" component={Home} />
+						<Route path="/post/page/:page" component={PostPage} />
+						<Route path="/post" component={PostPage} />
+						<Route path="/about" component={About} />
+						<Route component={PageNotFound} />
+					</Switch>
 				</Col>
 			</Row>
 			
