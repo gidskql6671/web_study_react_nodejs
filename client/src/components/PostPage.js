@@ -89,7 +89,7 @@ const PostPage = ( {match} ) => {
 const Post = ({id, title, content}) => {
 	return <div className="Post">
 		<p> {id} </p>
-		<Link to="/post/content/:id">
+		<Link to={"/post/content/" + id} style={{textDecoration: 'none'}}>
 			<h4> {title} </h4>
 			<p> {content} </p>
 		</Link>

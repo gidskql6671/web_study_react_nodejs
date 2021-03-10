@@ -54,7 +54,8 @@ const App = () => {
 					<Switch>
 						<Route exact path="/" component={Home} />
 						<Route path="/post/page/:page" component={PostPage} />
-						<Route path="/post" component={PostPage} />
+						<Route path="/post/content/:id" component={PostContent} />
+						<Route path="/post" exact component={PostPage} />
 						<Route path="/about" component={About} />
 						<Route component={PageNotFound} />
 					</Switch>
