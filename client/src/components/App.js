@@ -12,7 +12,7 @@ import 'scss/App.scss';
 import { Home } from 'components';
 import { PageNotFound } from 'components';
 import { About } from 'components';
-import { PostPage } from 'components';
+import { PostList } from 'components';
 import { PostContent } from 'components';
 
 
@@ -53,9 +53,9 @@ const App = () => {
 				<Col className="container-content">	
 					<Switch>
 						<Route exact path="/" component={Home} />
-						<Route path="/post/page/:page" component={PostPage} />
+						<Route exact path="/post" component={PostList}><Redirect push to="/page/1" /></Route>
+						<Route path="/post/page/:page" component={PostList} />
 						<Route path="/post/content/:id" component={PostContent} />
-						<Route path="/post" exact component={PostPage} />
 						<Route path="/about" component={About} />
 						<Route component={PageNotFound} />
 					</Switch>

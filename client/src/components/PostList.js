@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Button, Spinner } from 'react-bootstrap';
 
-import 'scss/PostPage.scss';
+import 'scss/PostList.scss';
 import { Pagination } from 'components';
 
 const PostPage = ( {match} ) => {
