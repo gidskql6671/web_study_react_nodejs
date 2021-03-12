@@ -29,9 +29,10 @@ const PostList = ( {match} ) => {
 		
 		// 전체 다 가져오기
 		axios.get('/api/post')
-		.then((res) => {
-			setPosts(res.data);
+		.then(( {data} ) => {
+			setPosts(data);
 		})
+		.catch(err => console.log("fecth post error"));
 		
 		
 		// 일정 개수만큼 가져오기
@@ -77,7 +78,7 @@ const PostList = ( {match} ) => {
 				})
 			}
 			</ul>
-			<Pagination  postsPerPage={postsPerPage} totalPosts={totalPosts} currentPage={currentPage} paginate={paginate} isLoading={isLoading} />
+			<Pagination  postsPerPage={postsPerPage} totalPosts={totalPosts} currentPage={currentPage} paginate={paginate} />
 		</div>
 	);
 };
