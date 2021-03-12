@@ -14,7 +14,8 @@ const PostList = ( {match} ) => {
 	let [isLoading, setIsLoading] = useState(true); // 현재 데이터를 불러오는 중인가?
 	let postsPerPage = 5; // 한 페이지당 post를 몇개를 보여줄 것인가.
 	
-	const paginate = (pageNumber) => { setCurrentPage(pageNumber) };
+	
+	const paginate = (pageNumber) => { setCurrentPage(pageNumber) }; // pagination에서 사용할 setCurrentPage 함수
 	
 	
 	useEffect(() => {
