@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Nav, Container, Navbar, Row, Col, Image, Spinner, Button } from 'react-bootstrap';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch, Redirect  } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
@@ -53,7 +53,7 @@ const App = () => {
 				<Col className="container-content">	
 					<Switch>
 						<Route exact path="/" component={Home} />
-						<Route exact path="/post" component={PostList}><Redirect push to="/page/1" /></Route>
+						<Redirect exact from="/post" to="/post/page/1" />
 						<Route path="/post/page/:page" component={PostList} />
 						<Route path="/post/content/:id" component={PostContent} />
 						<Route path="/about" component={About} />
