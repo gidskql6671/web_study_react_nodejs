@@ -53,7 +53,7 @@ const App = () => {
 				<Col className="container-content">	
 					<Switch>
 						<Route exact path="/" component={Home} />
-						<Redirect exact from="/post" to="/post/page/1" />
+						<Redirect exact from="/post" to="/post/page/1" /> {/* /post로 접속시 /post/page/1로 리다이렉트 */}
 						<Route path="/post/page/:page" component={PostList} />
 						<Route path="/post/content/:id" component={PostContent} />
 						<Route path="/about" component={About} />

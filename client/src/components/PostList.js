@@ -6,7 +6,7 @@ import { Button, Spinner } from 'react-bootstrap';
 import 'scss/PostList.scss';
 import { Pagination } from 'components';
 
-const PostPage = ( {match} ) => {
+const PostList = ( {match} ) => {
 	let [posts, setPosts] = useState([]); // post 데이터
 	let [totalPosts, setTotalPosts] = useState(1); // post 데이터의 총 개수
 	let [currentPage, setCurrentPage] = useState(1); // 현재 페이지
@@ -14,20 +14,16 @@ const PostPage = ( {match} ) => {
 	let [isLoading, setIsLoading] = useState(true); // 현재 데이터를 불러오는 중인가?
 	let postsPerPage = 5; // 한 페이지당 post를 몇개를 보여줄 것인가.
 	
-	const style = {color: "black", width: "18rem"};
+	const paginate = (pageNumber) => { setCurrentPage(pageNumber) };
 	
-	const paginate = (pageNumber) => {setCurrentPage(pageNumber)};
 	
 	useEffect(() => {
-		if (match.params.page)
-			setCurrentPage(parseInt(match.params.page));
+		setCurrentPage(parseInt(match.params.page));
 		
-		// 
+		// post의 총 개수 가져오기
 		axios.get('/api/post/count')
-		.then(( {data} ) =>{
-			let totalPosts = data.count;
-			
-			setTotalPosts( totalPosts );
+		.then(( {data: {count}} ) =>{
+			setTotalPosts( count );
 		})
 		.catch(err => console.log("fecth count error"));
 		
@@ -98,4 +94,4 @@ const Post = ({id, title, content}) => {
 }
 
 
-export default PostPage;
+export default PostList;
