@@ -4,6 +4,9 @@ const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const session = require('express-session');
+
+const passport = require('./config/passport'); 
 
 
 /* 
@@ -46,6 +49,12 @@ app.use(bodyParser.urlencoded({extended: true}))
 // 지금은 제공할 static file들이 없는거 같은데?
 //app.use( express.static( path.join(__dirname, 'public') ));  // static file들을 public 폴더에서 찾게 함.
 
+// session 설정
+app.use(session({secret:'MySecret', resave:true, saveUninitialized:true}));
+
+// passport 설정
+app.use(passport.initialize());
+app.use(passport.session());
 
 /* 서버 라우터 설정 */
 app.use('/', indexRouter);

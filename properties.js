@@ -1,6 +1,6 @@
 const propertiesReader = require('properties-reader');
 
-const properties = propertiesReader('./config.properties');
+const properties = propertiesReader('./config/config.properties');
 
 module.exports = {
 	getDbLink(){
