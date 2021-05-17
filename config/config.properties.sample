@@ -1,0 +1,5 @@
+# database url
+database.url = {db_link}
+
+# server port
+server.port = {portnum}
