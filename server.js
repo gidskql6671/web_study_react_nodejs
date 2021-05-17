@@ -31,7 +31,7 @@ global.reqlib = require('app-root-path').require;
 /* Router import */
 const indexRouter = require('./lib/routes/index');
 const postRouter = require('./lib/routes/post');
-const apiRouter = require('./lib/routes/api');
+const apiRouter = require('./lib/routes/api/index');
 
 
 /* 프로퍼티 로더 */
