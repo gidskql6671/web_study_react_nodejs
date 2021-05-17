@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Study Web Server</title>
+	</head>
+	<body>
+		<div style="margin: 100px auto; width: 500px;">
+			<h3>
+				로그인 창
+			</h3>
+			<form action="/user/login" method="POST">
+				<div style="display: flex">
+					<div style="margin-right: 20px">
+						<div>
+							<label> id : </label>
+							<input type="text" name="user_id" style=""/>
+						</div>
+						<div>
+							<label> password : </label>
+							<input type="text" name="user_password" />
+						</div>
+					</div>
+					<button type="submit"> 로그인 </button>
+				</div>
+			</form>
+			<a>
+				<button type="button">
+					회원가입 하기
+				</button>
+			</a>
+		</div>
+	</body>
+</html>

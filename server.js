@@ -5,8 +5,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const session = require('express-session');
-
-// const passport = require('./config/passport'); 
+const passport = require('./config/passport'); 
 
 
 /* 
@@ -32,6 +31,7 @@ global.reqlib = require('app-root-path').require;
 const indexRouter = require('./lib/routes/index');
 const postRouter = require('./lib/routes/post');
 const apiRouter = require('./lib/routes/apis/index');
+const userRouter = require('./lib/routes/user');
 
 
 /* 프로퍼티 로더 */
@@ -52,13 +52,14 @@ app.use(bodyParser.urlencoded({extended: true}))
 // session 설정
 app.use(session({secret:'MySecret', resave:true, saveUninitialized:true}));
 
-// passport 설정
-// app.use(passport.initialize());
-// app.use(passport.session());
+// passport 설정.
+app.use(passport.initialize());
+app.use(passport.session());
 
 /* 서버 라우터 설정 */
 app.use('/', indexRouter);
 app.use('/post', postRouter);
+app.use('/user', userRouter);
 app.use('/api', apiRouter);
 
 

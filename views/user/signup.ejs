@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Study Web Server</title>
+	</head>
+	<body>
+		<div style="margin: 100px auto; width: 300px;">
+			<h3>
+				회원가입 창
+			</h3>
+			<form action="/post/add" method="POST">
+				<div>
+					<label
+						> id : 
+						<input type="text" name="user_id" />
+					</label>
+					<label
+						> password : 
+						<input type="text" name="user_password" />
+					</label>
+					<label
+						> 이름 : 
+						<input type="text" name="user_name" />
+					</label>
+					<label
+						> 이메일 : 
+						<input type="text" name="email" />
+					</label>
+				</div>
+				<button type="submit"> 회원가입 </button>
+			</form>
+		</div>
+	</body>
+</html>
