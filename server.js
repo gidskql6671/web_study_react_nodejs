@@ -5,7 +5,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const session = require('express-session');
-const passport = require('./config/passport'); 
+const passport = require('passport');
+const passportConfig = require('./config/passport'); 
 
 
 /* 
@@ -53,6 +54,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(session({secret:'MySecret', resave:true, saveUninitialized:true}));
 
 // passport 설정.
+passportConfig();
 app.use(passport.initialize());
 app.use(passport.session());
 
