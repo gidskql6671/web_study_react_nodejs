@@ -13,24 +13,36 @@
 			</h3>
 			<form action="/user/login" method="POST">
 				<div style="display: flex">
-					<div style="margin-right: 20px">
-						<div>
-							<label> id : </label>
-							<input type="text" name="user_id" style=""/>
-						</div>
-						<div>
-							<label> password : </label>
-							<input type="text" name="user_password" />
-						</div>
-					</div>
+					<table style="margin-right: 20px">
+						<tr>
+							<td>
+								<label> id </label>
+								
+							</td>
+							<td> : </td>
+							<td>
+								<input type="text" name="user_id" style=""/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label> password </label>
+							</td>
+							<td> : </td>
+							<td>
+								<input type="text" name="user_password" />
+							</td>
+						</tr>
+					</table>
 					<button type="submit"> 로그인 </button>
 				</div>
 			</form>
-			<a>
-				<button type="button">
-					회원가입 하기
-				</button>
-			</a>
+			<button onClick="location.href='signup'">
+				회원가입 하기
+			</button>
+			<button onClick="location.href='/user'">
+				뒤로가기
+			</button>
 		</div>
 	</body>
 </html>
