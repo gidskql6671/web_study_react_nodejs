@@ -33,8 +33,8 @@ app.set('view engine', 'ejs');
 
 
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 
 // 지금은 제공할 static file들이 없는거 같은데?
@@ -69,7 +69,7 @@ mongoose.connect(dbLink, {
 	console.log("Connected to MongoDB");
 
 	const http = require('http').createServer(app);
-	http.listen(port, function() {
+	http.listen(port, () => {
     	console.log(`listening on ${port}`);
 	});
 })
