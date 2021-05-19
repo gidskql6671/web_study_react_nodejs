@@ -37,8 +37,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 
-// 지금은 제공할 static file들이 없는거 같은데?
-//app.use( express.static( path.join(__dirname, 'public') ));  // static file들을 public 폴더에서 찾게 함.
+// 가상경로 /static으로 시작하는 요청은 public 폴더에서 찾도록 함.
+app.use('/static', express.static( path.join(__dirname, 'public') ));  
 
 
 // session 설정
