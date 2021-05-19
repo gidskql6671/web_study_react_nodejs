@@ -70,9 +70,11 @@ app.use((req, res, next) => {
 /* Error Handler*/
 app.use((err, req, res, next) => {
 	if (err.status == 404)
-		res.status(404).send(err.message);
-	else
-		res.status(500).send("서버 문제입니다.");
+		res.render('error');
+	else{
+		//res.status(500).send("서버 문제입니다.");
+		throw err;
+	}
 })
 
 // mongoose 연결 및 서버 실행.

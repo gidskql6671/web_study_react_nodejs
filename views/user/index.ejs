@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 		<title>Study Web Server</title>
+		<link rel="stylesheet" type="text/css" href="/static/css/style.css">
 	</head>
 	<body>
 		<div style="margin: 100px auto; width: 500px;">
@@ -12,10 +13,10 @@
 				유저 창
 			</h3>
 			<% if (!locals.user) { %>
-				<button onClick="location.href='user/login'">
+				<button onClick="location.href='user/login'" class="btn">
 					로그인 하기
 				</button>
-				<button onClick="location.href='user/signup'">
+				<button onClick="location.href='user/signup'" class="btn">
 					회원가입 하기
 				</button>
 			<% } else{ %>
@@ -25,11 +26,11 @@
 						이메일 : <%= user.email ? user.email : "미등록" %>
 					</p>
 				</div>
-				<button onClick="location.href='user/logout'">
+				<button onClick="location.href='user/logout'" class="btn">
 					로그아웃
 				</button>
 			<% } %>
-			<button onClick="location.href='/'">
+			<button onClick="location.href='/'" class="btn">
 				홈으로 가기
 			</button>
 		</div>

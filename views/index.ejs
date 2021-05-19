@@ -5,46 +5,26 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 		<title>Study Web Server</title>
+		<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+		<link rel="stylesheet" type="text/css" href="/static/css/homepage.css">
 	</head>
 	<body>
-		<div style="margin: 100px auto; width: 300px;">
-			<h3>
+		<div class="container">
+			<h2 class="pageTitle">
 				nodejs 연습
-			</h3>
-			<form action="/post/add" method="POST">
-				<div>
-					<label
-						> Title : 
-						<input type="text" name="title" />
-					</label>
-					<p  style="margin-bottom: 10px">
-						Content
-					</p>
-					<textarea name="content" rows="5" cols="33"></textarea>
-				</div>
-				<button type="reset" style="margin-top: 10px"> Reset </button>
-				<button type="submit"> Submit </button>
-			</form>
-			<button onClick="deleteAll()" style="margin-top: 30px"> DB 내용 전체 삭제 </button>
-			<button onClick="location.href='/post/list'"> DB 내용 확인 </button>
-			<button onClick="location.href='/post'"> debug 버튼 </button>
-			<button onClick="location.href='/post/add/20'"> post 20개 만들기 </button>
-			<button onClick="location.href='/user'"> User Page </button>
+			</h2>
+			<div style="margin: 40px auto; padding: 30px; border: 3px solid gray; border-radius: 5px;">
+				<% if (locals.user) { %>
+					환영합니다. <%= user.name %>님.
+				<% } else { %>
+					로그인하지 않은 상태입니다.
+				<% } %>
+			</div>
+			<div class="navigation">
+				<button onClick="location.href='/post'" class="btn"> 게시판 </button>
+				<button onClick="location.href='/user'" class="btn"> 사용자 </button>
+			</div>
 		</div>
 		
-		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-		<script>
-			
-			function deleteAll(i){
-				$.ajax({
-					method: 'DELETE',
-					url: '/post/deleteAll'
-				}).done((result) => {
-					console.log(result);
-				}).fail((err) => {
-					console.log(err);
-				});
-			};
-		</script>
 	</body>
 </html>

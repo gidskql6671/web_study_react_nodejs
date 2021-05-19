@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Study Web Server</title>
+		<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+	</head>
+	<body>
+		<div style="margin: 100px auto; width: 300px;">
+			<h3>
+				nodejs 연습
+			</h3>
+			<form action="/post/add" method="POST">
+				<div>
+					<label
+						> Title : 
+						<input type="text" name="title" />
+					</label>
+					<p  style="margin-bottom: 10px">
+						Content
+					</p>
+					<textarea name="content" rows="5" cols="33"></textarea>
+				</div>
+				<button type="reset" style="margin-top: 10px"> Reset </button>
+				<button type="submit"> Submit </button>
+			</form>
+			<button onClick="location.href='/post'"> 뒤로가기 </button>
+		</div>
+		
+	</body>
+</html>

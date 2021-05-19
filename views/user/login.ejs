@@ -5,26 +5,32 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 		<title>Study Web Server</title>
+		<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+		<link rel="stylesheet" type="text/css" href="/static/css/user/login.css">
 	</head>
 	<body>
-		<div style="margin: 100px auto; width: 500px;">
-			<h3>
+		<div class="container">
+			<h2 class="pageTitle">
 				로그인 창
-			</h3>
+			</h2>
 			<% if (error) { %>
 				<%= error %>
 			<% } %>
-			<form action="/user/login" method="POST">
-				<div style="display: flex">
-					<table style="margin-right: 20px">
+			
+			<div class="container-form">
+				<table class="table-login">
+					<form action="/user/login" method="POST">
 						<tr>
 							<td>
 								<label> id </label>
-								
+
 							</td>
 							<td> : </td>
 							<td>
 								<input type="text" name="id"/>
+							</td>
+							<td rowspan="2">
+								<button type="submit" class="btn btn-login"> 로그인 </button>
 							</td>
 						</tr>
 						<tr>
@@ -36,14 +42,14 @@
 								<input type="password" name="password" />
 							</td>
 						</tr>
-					</table>
-					<button type="submit"> 로그인 </button>
-				</div>
-			</form>
-			<button onClick="location.href='signup'">
+					</form>
+				</table>
+			</div>
+			
+			<button onClick="location.href='signup'" class="btn">
 				회원가입 하기
 			</button>
-			<button onClick="location.href='/user'">
+			<button onClick="location.href='/user'" class="btn">
 				뒤로가기
 			</button>
 		</div>
