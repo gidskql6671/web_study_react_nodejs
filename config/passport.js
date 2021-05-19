@@ -23,7 +23,7 @@ module.exports = () => {
 			passReqToCallback: true
 		},
 		(req, username, password, done) => {
-			User.findOne({username: username}, (err, user) => {
+			User.findOne({user_id: username}, (err, user) => {
 				// DB 에러
 				if (err)
 					return done(err);

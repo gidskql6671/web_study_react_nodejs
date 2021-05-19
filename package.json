@@ -18,6 +18,7 @@
   "homepage": "https://github.com/gidskql6671/web_study#readme",
   "dependencies": {
     "app-root-path": "^3.0.0",
+    "bcrypt": "^5.0.1",
     "connect-flash": "^0.1.1",
     "cors": "^2.8.5",
     "ejs": "^3.1.6",
