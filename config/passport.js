@@ -9,8 +9,9 @@ module.exports = () => {
 		done(null, user.id);
 	});
 	passport.deserializeUser((id, done) => {
-		User.findOne({user_id: id}, (err, user) => {
-			done(err, user);
+		User.findOne({id : id}, (err, user) => {
+			if (err) return done(err);
+			done(null, user);
 		});
 	});
 
@@ -18,18 +19,17 @@ module.exports = () => {
 	// passport local strategy
 	passport.use('local-login',
 		new LocalStrategy({
-			usernameField: 'user_id',
-			passwordField: 'user_password',
-			passReqToCallback: true
+			usernameField: 'id',
+			passwordField: 'password'
 		},
-		(req, username, password, done) => {
-			User.findOne({user_id: username}, (err, user) => {
+		(id, password, done) => {
+			User.findOne({ id: id }, (err, user) => {
 				// DB 에러
 				if (err)
 					return done(err);
-				// username에 맞는 사용자가 없는 경우
+				// id에 맞는 사용자가 없는 경우
 				if (!user)
-					return done(null, false, {message: 'Incorrect username.'});
+					return done(null, false, {message: 'Incorrect id.'});
 				// password가 틀린 경우
 				if (!user.validPassword(password))
 					return done(null, false, {message: 'Incorrect password.'});

@@ -11,11 +11,26 @@
 			<h3>
 				유저 창
 			</h3>
-			<button onClick="location.href='user/login'">
-				로그인 하기
-			</button>
-			<button onClick="location.href='user/signup'">
-				회원가입 하기
+			<% if (!locals.user) { %>
+				<button onClick="location.href='user/login'">
+					로그인 하기
+				</button>
+				<button onClick="location.href='user/signup'">
+					회원가입 하기
+				</button>
+			<% } else{ %>
+				<div>
+					<p>
+						이름 : <%= user.name %>
+						이메일 : <%= user.email ? user.email : "미등록" %>
+					</p>
+				</div>
+				<button onClick="location.href='user/logout'">
+					로그아웃
+				</button>
+			<% } %>
+			<button onClick="location.href='/'">
+				홈으로 가기
 			</button>
 		</div>
 	</body>
