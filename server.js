@@ -9,6 +9,7 @@ const session = require('express-session');
 const passport = require('passport');
 const passportConfig = require('./config/passport'); 
 const createError = require('http-errors');
+const flash = require('connect-flash');
 
 
 // 프로젝트의 root path를 구해주는 모듈의 helper function.
@@ -44,6 +45,10 @@ app.use('/static', express.static( path.join(__dirname, 'public') ));
 
 // session 설정
 app.use(session({secret:'MySecret', resave:false, saveUninitialized:true}));
+
+
+// flash(휘발성 메시지) 추가
+app.use(flash());
 
 
 // passport 설정.

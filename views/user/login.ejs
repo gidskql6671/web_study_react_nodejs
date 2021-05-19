@@ -11,6 +11,9 @@
 			<h3>
 				로그인 창
 			</h3>
+			<% if (error) { %>
+				<%= error %>
+			<% } %>
 			<form action="/user/login" method="POST">
 				<div style="display: flex">
 					<table style="margin-right: 20px">
