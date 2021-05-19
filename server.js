@@ -8,6 +8,7 @@ const cors = require('cors');
 const session = require('express-session');
 const passport = require('passport');
 const passportConfig = require('./config/passport'); 
+const createError = require('http-errors');
 
 
 // 프로젝트의 root path를 구해주는 모듈의 helper function.
@@ -42,7 +43,7 @@ app.use('/static', express.static( path.join(__dirname, 'public') ));
 
 
 // session 설정
-app.use(session({secret:'MySecret', resave:true, saveUninitialized:true}));
+app.use(session({secret:'MySecret', resave:false, saveUninitialized:true}));
 
 
 // passport 설정.
@@ -57,6 +58,17 @@ app.use('/post', postRouter);
 app.use('/user', userRouter);
 app.use('/api', apiRouter);
 
+app.use((req, res, next) => {
+	next(createError.NotFound());
+})
+
+/* Error Handler*/
+app.use((err, req, res, next) => {
+	if (err.status == 404)
+		res.status(404).send(err.message);
+	else
+		res.status(500).send("서버 문제입니다.");
+})
 
 // mongoose 연결 및 서버 실행.
 mongoose.connect(dbLink, {
