@@ -13,7 +13,10 @@
 				게시물 목록
 			</h2>
 			
-			<button onclick="history.back()" class="btn">Back</button>
+			<div>
+				<button onclick="location.href='/post/add'" class="btn">글작성</button>
+				<button onclick="history.back()" class="btn">Back</button>
+			</div>
 			<ul>
 				
 			<% for(let i = 0; i < posts.length; i++){ %>
