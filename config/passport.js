@@ -14,7 +14,7 @@ module.exports = () => {
 			done(null, user);
 		});
 	});
-
+	
 
 	// passport local strategy
 	passport.use('local-login',

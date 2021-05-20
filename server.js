@@ -2,7 +2,6 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const session = require('express-session');
@@ -33,28 +32,35 @@ const port = property.getServerPort();
 // view engine을 ejs로 설정
 app.set('view engine', 'ejs'); 
 
-
 app.use(cors());
+
+// bodyparser 세팅
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-
 
 // 가상경로 /static으로 시작하는 요청은 public 폴더에서 찾도록 함.
 app.use('/static', express.static( path.join(__dirname, 'public') ));  
 
-
 // session 설정
 app.use(session({secret:'MySecret', resave:false, saveUninitialized:true}));
 
-
 // flash(휘발성 메시지) 추가
 app.use(flash());
-
 
 // passport 설정.
 passportConfig();
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Custom MiddleWare 추가
+app.use((req, res, next) => {
+	// response.locals에 담긴 변수들은 ejs에서 바로 사용이 가능하기에 등록해둠.
+	// request.isAuthenticated()에는 현재 요청이 인증이 된 사용자가 보낸 것인지 여부가 담김.
+	// request.user에는 현재 사용자의 정보가 담김.
+	res.locals.isAuthenticated = req.isAuthenticated(); 
+	res.locals.currentUser = req.user;
+	next();
+})
 
 
 /* 서버 라우터 설정 */
