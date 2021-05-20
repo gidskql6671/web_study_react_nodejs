@@ -12,7 +12,7 @@
 			<h3>
 				유저 창
 			</h3>
-			<% if (!locals.user) { %>
+			<% if (!isAuthenticated) { %>
 				<button onClick="location.href='user/login'" class="btn">
 					로그인 하기
 				</button>
@@ -22,8 +22,8 @@
 			<% } else{ %>
 				<div>
 					<p>
-						이름 : <%= user.name %>
-						이메일 : <%= user.email ? user.email : "미등록" %>
+						이름 : <%= currentUser.name %>
+						이메일 : <%= currentUser.email ? currentUser.email : "미등록" %>
 					</p>
 				</div>
 				<button onClick="location.href='user/logout'" class="btn">
