@@ -6,12 +6,18 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 		<title>Study Web Server</title>
 		<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+		<link rel="stylesheet" type="text/css" href="/static/css/board/style.css">
 	</head>
 	<body>
 		<div class="container">
 			<h2 class="pageTitle">
 				게시물 목록
 			</h2>
+			<% if (errorMessages != ""){ %>
+			<div class="container-error">
+				<p><%= errorMessages %></p>
+			</div>
+			<% } %>
 			
 			<div>
 				<button onclick="location.href='/post/add'" class="btn">글작성</button>
