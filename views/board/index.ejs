@@ -23,17 +23,29 @@
 				<button onclick="location.href='/post/add'" class="btn">글작성</button>
 				<button onclick="location.href='/'" class="btn">홈페이지</button>
 			</div>
-			<ul>
+			<ul class="container-postList">
 				
 			<% for(let i = 0; i < posts.length; i++){ %>
-				<li> 
-					<p> Title: <%= posts[i].title %> </p>
-					<p> created : <%= moment(posts[i].created).format('YYYY-MM-DD hh:mm') %> </p>
-					<p> id : <%= posts[i]._id %> </p>
-					<div style="width: 400px; border: 2px solid black; border-radius: 2px; padding: 10px;">
-						<p> <%= posts[i].content %> </p>
-					</div>
-					<button class="btn-delete-post" data-id="<%= posts[i]._id %>"> 글 삭제 </button> </li>
+				<a href="/post/<%= posts[i]._id %>">
+					<li class="container-post"> 
+						<h3> Title: <%= posts[i].title %> </h3>
+						<div class="container-meta" >
+							<p> 작성시간 : <%= posts[i].reg_dt %> </p>
+							<div class="container-tag">
+								<p> 태그 : </p>
+								<% posts[i].tag.forEach((el, index) =>{ %>
+								<div> 
+									<%= el %>
+								</div>
+								<% }) %>
+							</div>
+							<p> 작성자 : <%= posts[i].reg_id %> </p>
+						</div>
+						<div class="content-post" >
+							<p> <%= posts[i].content %> </p>
+						</div>
+					</li>
+				</a>
 			<% } %>
 				
 			</ul>
