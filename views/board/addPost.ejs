@@ -6,27 +6,61 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 		<title>Study Web Server</title>
 		<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+		<link rel="stylesheet" type="text/css" href="/static/css/board/style.css">
 	</head>
 	<body>
-		<div style="margin: 100px auto; width: 300px;">
-			<h3>
-				nodejs 연습
-			</h3>
-			<form action="/post/add" method="POST">
-				<div>
-					<label
-						> Title : 
-						<input type="text" name="title" />
-					</label>
-					<p  style="margin-bottom: 10px">
-						Content
-					</p>
-					<textarea name="content" rows="5" cols="33"></textarea>
-				</div>
-				<button type="reset" style="margin-top: 10px"> Reset </button>
-				<button type="submit"> Submit </button>
+		<div class="container">
+			<h2 class="pageTitle">
+				게시글 작성
+			</h2>
+			<form action="/post/add" class="container-form" method="POST">
+				<table class="table-addPost">
+					<tr>
+						<td>
+							제목
+						</td>
+						<td>
+							<input type="text" name="title" class="input-addPost" placeholder="제목" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							작성자
+						</td>
+						<td>
+							<input readonly type="text" name="reg_id" class="input-addPost" value="<%= currentUser.name%>"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							태그
+						</td>
+						<td>
+							<div class="container-checkbox-addPost">
+								<label class="checkbox-addPost"><input type="checkbox" name="tag" value="tag1"> 태그1 </label>
+								<label class="checkbox-addPost"><input type="checkbox" name="tag" value="tag2"> 태그2 </label>
+								<label class="checkbox-addPost"><input type="checkbox" name="tag" value="tag3"> 태그3 </label>
+							</div>
+						</td>
+					</tr>
+					<tr rowspan="5" style="vertical-align: top;">
+						<td>
+							내용
+						</td>
+						<td>
+							<textarea name="content" rows="5" cols="35" placeholder="내용을 입력하세요."></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<div style="display: flex; justify-content: space-between;">
+								<button type="submit" class="btn"> 제출 </button>
+								<button type="button" onClick="location.href='/post'" class="btn"> 뒤로가기 </button>
+							</div>
+						</td>
+					</tr>
+				</table>
 			</form>
-			<button onClick="location.href='/post'"> 뒤로가기 </button>
 		</div>
 		
 	</body>
