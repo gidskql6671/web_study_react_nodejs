@@ -76,7 +76,7 @@ app.use((req, res, next) => {
 /* Error Handler*/
 app.use((err, req, res, next) => {
 	if (err.status == 404)
-		res.render('error');
+		res.render('error', { message: "존재하지 않는 페이지입니다."});
 	else{
 		//res.status(500).send("서버 문제입니다.");
 		throw err;

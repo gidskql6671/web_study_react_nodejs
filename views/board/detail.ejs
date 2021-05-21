@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Study Web Server</title>
+		<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+		<link rel="stylesheet" type="text/css" href="/static/css/board/style.css">
+		<link rel="stylesheet" type="text/css" href="/static/css/board/detail.css">
+	</head>
+	<body>
+		<div class="container">
+			<h2 class="pageTitle">
+				게시물
+			</h2>
+
+				
+			<div class="detail-container-meta" >
+				<h3 class="detail-post-title"> <%= post.title %> </h3>
+				<p class="detail-post-regdt"> 작성시간 : <%= post.reg_dt %> </p>
+				<div class="container-tag detail-container-tag">
+					<p> 태그 : </p>
+					<% post.tag.forEach((element, index) =>{ %>
+					<div> 
+						<%= element %>
+					</div>
+					<% }) %>
+				</div>
+				<p class="detail-post-regid"> 작성자 : <%= post.reg_id %> </p>
+			</div>
+			<div class="content-post" >
+				<p> <%= post.content %> </p>
+			</div>
+				
+			<div class="detail-container-controller">
+				<button onclick="location.href='/post'" class="btn">글 목록</button>
+				<% if (isOwner) { %>
+				<button onclick="location.href='/post/edit/<%= post._id %>'" class="btn">글 수정</button>
+				<button onclick="location.href='/post/delete/<%= post._id %>'" class="btn">글 삭제</button>
+				<% } %>
+			</div>
+			
+		</div>
+	</body>
+</html>
