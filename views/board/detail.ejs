@@ -37,7 +37,9 @@
 				<button onclick="location.href='/post'" class="btn">글 목록</button>
 				<% if (isOwner) { %>
 				<button onclick="location.href='/post/edit/<%= post._id %>'" class="btn">글 수정</button>
-				<button onclick="location.href='/post/delete/<%= post._id %>'" class="btn">글 삭제</button>
+				<form action="/post/<%= post._id %>?_method=DELETE" method="POST">
+					<button type="submit" class="btn">글 삭제</button>
+				</form>
 				<% } %>
 			</div>
 			

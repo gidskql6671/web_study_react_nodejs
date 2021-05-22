@@ -9,6 +9,7 @@ const passport = require('passport');
 const passportConfig = require('./config/passport'); 
 const createError = require('http-errors');
 const flash = require('connect-flash');
+const methodOverride = require("method-override");
 
 
 // 프로젝트의 root path를 구해주는 모듈의 helper function.
@@ -40,6 +41,9 @@ app.use(express.urlencoded({extended: true}));
 
 // 가상경로 /static으로 시작하는 요청은 public 폴더에서 찾도록 함.
 app.use('/static', express.static( path.join(__dirname, 'public') ));  
+
+// methodOverride 설정
+app.use(methodOverride('_method'));
 
 // session 설정
 app.use(session({secret:'MySecret', resave:false, saveUninitialized:true}));
