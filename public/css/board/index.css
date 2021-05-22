@@ -23,5 +23,6 @@
 .board-index-container-meta{
 	display: flex;
 	justify-content: space-between;
-	padding-right: 20px;
+	padding: 5px 20px;
+	margin-bottom: 10px;
 }

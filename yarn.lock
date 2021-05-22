@@ -541,6 +541,11 @@ etag@~1.8.1:
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
   integrity sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
 
+express-ejs-layouts@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/express-ejs-layouts/-/express-ejs-layouts-2.5.0.tgz#b33f285fa7d5d2b8a6b7ab6569730547156e4e79"
+  integrity sha512-27Kza3FR8UqvQsq1ewaxC2IwpgrQttYDEFN5s8D74Fv1VPdzsXFWsiKhPMlNauG+DrgMAmh7FhQl5hKHffd+wQ==
+
 express-session@^1.17.1:
   version "1.17.1"
   resolved "https://registry.yarnpkg.com/express-session/-/express-session-1.17.1.tgz#36ecbc7034566d38c8509885c044d461c11bf357"

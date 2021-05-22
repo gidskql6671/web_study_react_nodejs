@@ -30,8 +30,13 @@ const dbLink = property.getDbLink();
 const port = property.getServerPort();
 
 
-// view engine을 ejs로 설정
+// view 관련
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs'); 
+app.use(require('express-ejs-layouts'));
+app.set('layout', 'layouts/layout');
+app.set("layout extractScripts", true);
+
 
 app.use(cors());
 

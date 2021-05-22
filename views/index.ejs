@@ -1,30 +1,17 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<title>Study Web Server</title>
-		<link rel="stylesheet" type="text/css" href="/static/css/style.css">
-		<link rel="stylesheet" type="text/css" href="/static/css/homepage.css">
-	</head>
-	<body>
-		<div class="container">
-			<h2 class="box-content">
-				nodejs 연습
-			</h2>
-			<div style="margin: 40px auto; padding: 30px; border: 3px solid gray; border-radius: 5px;">
-				<% if (isAuthenticated) { %>
-					환영합니다. <%= currentUser.name %>님.
-				<% } else { %>
-					로그인하지 않은 상태입니다.
-				<% } %>
-			</div>
-			<div class="navigation">
-				<button onClick="location.href='/post'" class="btn"> 게시판 </button>
-				<button onClick="location.href='/user'" class="btn"> 사용자 </button>
-			</div>
-		</div>
+<div class="container">
+	<h2 class="box-content">
+		nodejs 연습
+	</h2>
+	<div style="margin: 40px auto; padding: 30px; border: 3px solid gray; border-radius: 5px;">
+		<% if (isAuthenticated) { %>
+			환영합니다. <%= currentUser.name %>님.
+		<% } else { %>
+			로그인하지 않은 상태입니다.
+		<% } %>
+	</div>
+	<div class="navigation">
+		<button onClick="location.href='/post'" class="btn"> 게시판 </button>
+		<button onClick="location.href='/user'" class="btn"> 사용자 </button>
+	</div>
+</div>
 		
-	</body>
-</html>
