@@ -14,14 +14,15 @@
 			<h2 class="pageTitle">
 				게시글 작성
 			</h2>
-			<form action="/post" class="container-form" method="POST">
+			
+			<form action="/post/<%= isEdit ? prevContent._id + '?_method=PATCH' : ''%>" class="container-form" method="POST">
 				<table class="board-write-table">
 					<tr>
 						<td>
 							제목
 						</td>
 						<td>
-							<input type="text" name="title" class="board-write-input" placeholder="제목" value="<%= post.title %>"/>
+							<input type="text" name="title" class="board-write-input" placeholder="제목" value="<%= prevContent.title %>"/>
 						</td>
 					</tr>
 					<tr>
@@ -37,7 +38,9 @@
 							태그
 						</td>
 						<td>
-							<input type="text" name="tags" class="board-write-input" placeholder="쉼표를 통해 구별합니다. (tag1, tag2, ...)" />
+							<% %>
+							<input type="text" name="tags" class="board-write-input" placeholder="쉼표를 통해 구별합니다. (tag1, tag2, ...)"
+								   value="<%= prevContent.tags %>"/>
 						</td>
 					</tr>
 					<tr rowspan="5" style="vertical-align: top;">
@@ -45,14 +48,18 @@
 							내용
 						</td>
 						<td>
-							<textarea name="content" rows="10" cols="40" placeholder="내용을 입력하세요." value="value="<%= post.content %>""></textarea>
+							<textarea name="content" rows="10" cols="40" placeholder="내용을 입력하세요."><%= prevContent.content %> </textarea>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2">
 							<div style="display: flex; justify-content: space-between;">
-								<button type="submit" class="btn"> 제출 </button>
-								<button type="button" onClick="location.href='/post'" class="btn"> 뒤로가기 </button>
+								<% if (isEdit) {%>
+								<button class="btn"> 수정 </button>
+								<% } else {%>
+								<button class="btn"> 제출 </button>
+								<% } %>
+								<button type="button" onClick="history.back()" class="btn"> 뒤로가기 </button>
 							</div>
 						</td>
 					</tr>

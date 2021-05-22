@@ -39,9 +39,7 @@
 				<div class="board-detail-container-controller">
 					<button onclick="location.href='/post'" class="btn">글 목록</button>
 					<% if (isOwner) { %>
-					<form action="/post/write?postId=<%= post._id %>&_method=patch" method="POST">
-						<button class="btn">글 수정</button>
-					</form>
+					<button onClick="location.href='/post/write?postId=<%= post._id %>'" class="btn">글 수정</button>
 					<form action="/post/<%= post._id %>?_method=DELETE" method="POST">
 						<button class="btn">글 삭제</button>
 					</form>
