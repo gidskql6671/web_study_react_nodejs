@@ -1,0 +1,27 @@
+.board-index-container-error{
+	text-align: center;
+	border: 3px solid red;
+	border-radius: 10px;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+.board-index-container-post{
+	list-style: none;
+	width: 100%;
+	border: 2px solid gray;
+	border-radius: 5px;
+	padding: 10px;
+	margin-top: 5px;
+	box-sizing: border-box;
+}
+.board-index-container-post > h3{
+	margin: 0 0 5px 0;
+	border-bottom: 2px solid blueviolet;
+}
+
+.board-index-container-meta{
+	display: flex;
+	justify-content: space-between;
+	padding-right: 20px;
+}

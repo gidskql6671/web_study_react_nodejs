@@ -15,32 +15,38 @@
 				게시물
 			</h2>
 
-				
-			<div class="detail-container-meta" >
-				<h3 class="detail-post-title"> <%= post.title %> </h3>
-				<p class="detail-post-regdt"> 작성시간 : <%= post.reg_dt %> </p>
-				<div class="container-tag detail-container-tag">
-					<p> 태그 : </p>
-					<% post.tag.forEach((element, index) =>{ %>
-					<div> 
-						<%= element %>
+			
+			<div class="board-container-content">
+				<div class="board-detail-container-meta" >
+					<h3 class="board-detail-post-title"> <%= post.title %> </h3>
+					<p class="board-detail-post-regdt"> 작성시간 : <%= post.reg_dt %> </p>
+					<div style="display:flex;">
+						<p style="margin-right: 15px;"> 태그 : </p>
+						<div class="board-container-tag board-detail-container-tag">
+							<% post.tags.forEach((element, index) =>{ %>
+							<div> 
+								<%= element %>
+							</div>
+							<% }) %>
+						</div>
 					</div>
-					<% }) %>
+					<p class="board-detail-post-regid"> 작성자 : <%= post.reg_id %> </p>
 				</div>
-				<p class="detail-post-regid"> 작성자 : <%= post.reg_id %> </p>
-			</div>
-			<div class="content-post" >
-				<p> <%= post.content %> </p>
-			</div>
-				
-			<div class="detail-container-controller">
-				<button onclick="location.href='/post'" class="btn">글 목록</button>
-				<% if (isOwner) { %>
-				<button onclick="location.href='/post/edit/<%= post._id %>'" class="btn">글 수정</button>
-				<form action="/post/<%= post._id %>?_method=DELETE" method="POST">
-					<button type="submit" class="btn">글 삭제</button>
-				</form>
-				<% } %>
+				<div class="board-content-post" >
+					<p> <%= post.content %> </p>
+				</div>
+
+				<div class="board-detail-container-controller">
+					<button onclick="location.href='/post'" class="btn">글 목록</button>
+					<% if (isOwner) { %>
+					<form action="/post/write?postId=<%= post._id %>&_method=patch" method="POST">
+						<button class="btn">글 수정</button>
+					</form>
+					<form action="/post/<%= post._id %>?_method=DELETE" method="POST">
+						<button class="btn">글 삭제</button>
+					</form>
+					<% } %>
+				</div>
 			</div>
 			
 		</div>

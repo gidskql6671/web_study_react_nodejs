@@ -7,6 +7,7 @@
 		<title>Study Web Server</title>
 		<link rel="stylesheet" type="text/css" href="/static/css/style.css">
 		<link rel="stylesheet" type="text/css" href="/static/css/board/style.css">
+		<link rel="stylesheet" type="text/css" href="/static/css/board/write.css">
 	</head>
 	<body>
 		<div class="container">
@@ -14,13 +15,13 @@
 				게시글 작성
 			</h2>
 			<form action="/post" class="container-form" method="POST">
-				<table class="table-addPost">
+				<table class="board-write-table">
 					<tr>
 						<td>
 							제목
 						</td>
 						<td>
-							<input type="text" name="title" class="input-addPost" placeholder="제목" value="<%= post.title %>"/>
+							<input type="text" name="title" class="board-write-input" placeholder="제목" value="<%= post.title %>"/>
 						</td>
 					</tr>
 					<tr>
@@ -28,7 +29,7 @@
 							작성자
 						</td>
 						<td>
-							<input readonly type="text" name="reg_id" class="input-addPost" value="<%= currentUser.name%>"/>
+							<input readonly type="text" name="reg_id" class="board-write-input" value="<%= currentUser.name%>"/>
 						</td>
 					</tr>
 					<tr>
@@ -36,7 +37,7 @@
 							태그
 						</td>
 						<td>
-							<input type="text" name="tags" class="input-addPost" placeholder="쉼표를 통해 구별합니다. (tag1, tag2, ...)" />
+							<input type="text" name="tags" class="board-write-input" placeholder="쉼표를 통해 구별합니다. (tag1, tag2, ...)" />
 						</td>
 					</tr>
 					<tr rowspan="5" style="vertical-align: top;">
@@ -44,7 +45,7 @@
 							내용
 						</td>
 						<td>
-							<textarea name="content" rows="5" cols="35" placeholder="내용을 입력하세요." value="value="<%= post.content %>""></textarea>
+							<textarea name="content" rows="10" cols="40" placeholder="내용을 입력하세요." value="value="<%= post.content %>""></textarea>
 						</td>
 					</tr>
 					<tr>

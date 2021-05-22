@@ -1,6 +1,6 @@
 .container{
 	margin: 100px auto; 
-	width: 800px;
+	width: 1400px;
 }
 .pageTitle{
 	text-align: center;
@@ -12,6 +12,21 @@
 	width: 100px;
 	height: 30px;
 	border-radius: 5px;
+}
+.container-content{
+	width: 100%;
+	display: grid;
+	
+	grid-template-columns: 1fr 4fr;
+}
+.container-profile{
+	margin: 20px auto;
+	width: 80%;
+	box-sizing: border-box;
+	padding: 30px; 
+	border: 3px solid gray; 
+	border-radius: 5px;
+	text-align: center;
 }
 
 a:link { 

@@ -1,82 +1,26 @@
-.container-error{
-	text-align: center;
-	border: 3px solid red;
-	border-radius: 10px;
-	padding: 5px;
-	margin-bottom: 10px;
-}
-
-.container-postList{
+.board-container-content{
+	margin: 20px auto;
 	width: 100%;
 	padding: 0px;
 }
-.container-post{
-	list-style: none;
-	width: 100%;
-	border: 2px solid gray;
-	border-radius: 5px;
-	padding: 10px;
-	margin-top: 5px;
-	box-sizing: border-box;
-}
-.container-post > h3{
-	margin: 0 0 5px 0;
-	border-bottom: 2px solid blueviolet;
-}
-
-.container-meta{
-	display: flex;
-	justify-content: space-between;
-	padding-right: 20px;
-}
-.content-post{
+.board-content-post{
 	border: 2px solid black; 
 	border-radius: 10px; 
 	padding: 10px 20px;
 	margin-bottom: 10px;
 }
-.container-tag{
+.board-container-tag{
 	display: flex;
-	width: 250px; 
+	flex-wrap: wrap;
+	width: 600px;
 	align-items: center;
 }
-.container-tag > p{
+.board-container-tag > p{
 	margin-right: 10px;
 }
-.container-tag > div{
+.board-container-tag > div{
 	border: 2px solid black; 
 	border-radius: 5px;
 	padding: 2px 8px;
 	margin-right: 10px;
-}
-
-
-
-.container-form{
-	width: 100%;
-	border-radius: 10px;
-	border: 3px solid gray;
-	box-sizing: border-box;
-	margin: 30px 0px;
-}
-.table-addPost{
-	border-spacing: 30px 5px;
-	margin: 10px auto;
-	padding: 20px;
-}
-.input-addPost{
-	width: 100%;
-	box-sizing: border-box;
-}
-.container-checkbox-addPost{
-	width: 100%;
-	box-sizing: border-box;
-	display: flex;
-	justify-content: space-between;
-}
-.checkbox-addPost{
-	border-radius: 3px;
-	border: 1px solid gray;
-	width: 30%;
-	padding: 0px 2px;
 }

@@ -1,0 +1,16 @@
+.board-write-container-form{
+	width: 100%;
+	border-radius: 10px;
+	border: 3px solid gray;
+	box-sizing: border-box;
+	margin: 30px 0px;
+}
+.board-write-table{
+	border-spacing: 30px 5px;
+	margin: 10px auto;
+	padding: 20px;
+}
+.board-write-input{
+	width: 100%;
+	box-sizing: border-box;
+}
