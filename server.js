@@ -52,7 +52,7 @@ app.use(session({secret:'MySecret', resave:false, saveUninitialized:true}));
 app.use(flash());
 
 // passport 설정.
-passportConfig();
+passportConfig.init();
 app.use(passport.initialize());
 app.use(passport.session());
 
