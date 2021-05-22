@@ -52,12 +52,9 @@ button {
 	height: 100px;
 }
 
-
-
-/* 공용 영역 */
-
-.container{
-	margin: 100px auto; 
+/* section(공용) 영역 */
+.section-container{
+	margin: 50px auto; 
 	width: 1400px;
 }
 .box-content{

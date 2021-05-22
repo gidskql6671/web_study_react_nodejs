@@ -7,14 +7,17 @@
 	<title>Study Web Server</title>
 	
 	<!-- global style -->
-		<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+	
+	<!-- specific style -->
+	<%- style %>
 </head>
 <body>
 	<header class="header-container">
 		<%- include('header') %>
 	</header>
 	
-	<section>
+	<section class="section-container">
 		<%- body %>
 	</section>
 	

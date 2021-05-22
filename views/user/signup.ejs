@@ -1,61 +1,47 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<title>Study Web Server</title>
-		<link rel="stylesheet" type="text/css" href="/static/css/style.css">
-	</head>
-	<body>
-		<div style="margin: 100px auto; width: 300px;">
-			<h3 class="box-content">
-				회원가입 창
-			</h3>
-			<form action="/user/signup" method="POST">
-				<table>
-					<tr>
-						<td>
-							<label> id </label>
-						</td>
-						<td> : </td>
-						<td>
-							<input type="text" name="id" />
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label> password </label>
-						</td>
-						<td> : </td>
-						<td>
-							<input type="password" name="password" />
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label> 이름 </label>
-						</td>
-						<td> : </td>
-						<td>
-							<input type="text" name="name"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label> 이메일 </label>
-						</td>
-						<td> : </td>
-						<td>
-							<input type="email" name="email" />
-						</td>
-					</tr>
-				</table>
-				<button type="submit" class="btn"> 회원가입 </button>
-			</form>
-			<button onClick="location.href='/user'" class="btn">
-				뒤로가기
-			</button>
-		</div>
-	</body>
-</html>
+<h3 class="box-content">
+	회원가입 창
+</h3>
+<form action="/user/signup" method="POST">
+	<table>
+		<tr>
+			<td>
+				<label> id </label>
+			</td>
+			<td> : </td>
+			<td>
+				<input type="text" name="id" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label> password </label>
+			</td>
+			<td> : </td>
+			<td>
+				<input type="password" name="password" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label> 이름 </label>
+			</td>
+			<td> : </td>
+			<td>
+				<input type="text" name="name"/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label> 이메일 </label>
+			</td>
+			<td> : </td>
+			<td>
+				<input type="email" name="email" />
+			</td>
+		</tr>
+	</table>
+	<button type="submit" class="btn"> 회원가입 </button>
+</form>
+<button onClick="location.href='/user'" class="btn">
+	뒤로가기
+</button>

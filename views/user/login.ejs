@@ -1,59 +1,47 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<title>Study Web Server</title>
-		<link rel="stylesheet" type="text/css" href="/static/css/style.css">
-		<link rel="stylesheet" type="text/css" href="/static/css/user/login.css">
-	</head>
-	<body>
-		<div class="container">
-			<h2 class="box-content">
-				로그인 창
-			</h2>
-			<% if (message != "") { %>
-				<div class="box-content">
-					<%= message %>
-				</div>
-			<% } %>
-			
-			<div class="container-form">
-				<table class="table-login">
-					<form action="/user/login" method="POST">
-						<tr>
-							<td>
-								<label> id </label>
+<link rel="stylesheet" type="text/css" href="/static/css/user/login.css">
 
-							</td>
-							<td> : </td>
-							<td>
-								<input type="text" name="id" tabindex="1"/>
-							</td>
-							<td rowspan="2">
-								<button type="submit" class="btn btn-login" tabindex="3"> 로그인 </button>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label> password </label>
-							</td>
-							<td> : </td>
-							<td>
-								<input type="password" name="password" tabindex="2" />
-							</td>
-						</tr>
-					</form>
-				</table>
-			</div>
-			
-			<button onClick="location.href='signup'" class="btn">
-				회원가입 하기
-			</button>
-			<button onClick="location.href='/user'" class="btn">
-				뒤로가기
-			</button>
-		</div>
-	</body>
-</html>
+
+<h2 class="box-content">
+	로그인 창
+</h2>
+<% if (message != "") { %>
+	<div class="box-content">
+		<%= message %>
+	</div>
+<% } %>
+
+<div class="container-form">
+	<table class="table-login">
+		<form action="/user/login" method="POST">
+			<tr>
+				<td>
+					<label> id </label>
+
+				</td>
+				<td> : </td>
+				<td>
+					<input type="text" name="id" tabindex="1"/>
+				</td>
+				<td rowspan="2">
+					<button type="submit" class="btn btn-login" tabindex="3"> 로그인 </button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label> password </label>
+				</td>
+				<td> : </td>
+				<td>
+					<input type="password" name="password" tabindex="2" />
+				</td>
+			</tr>
+		</form>
+	</table>
+</div>
+
+<button onClick="location.href='signup'" class="btn">
+	회원가입 하기
+</button>
+<button onClick="location.href='/user'" class="btn">
+	뒤로가기
+</button>
