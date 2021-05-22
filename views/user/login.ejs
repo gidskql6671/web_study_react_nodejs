@@ -10,11 +10,13 @@
 	</head>
 	<body>
 		<div class="container">
-			<h2 class="pageTitle">
+			<h2 class="box-content">
 				로그인 창
 			</h2>
-			<% if (error) { %>
-				<%= error %>
+			<% if (message != "") { %>
+				<div class="box-content">
+					<%= message %>
+				</div>
 			<% } %>
 			
 			<div class="container-form">
