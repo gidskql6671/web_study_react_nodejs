@@ -9,7 +9,6 @@ exports.isAuthenticated = (req, res, next) => {
 	
 	// remember where session come from
 	req.session.returnTo = req.originalUrl;
-	console.log(req.originalUrl);
 	req.session.save((err) =>{
 		if (err) return next(err);
 		res.redirect('/user/login');
