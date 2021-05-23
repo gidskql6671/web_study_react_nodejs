@@ -1,14 +1,15 @@
 html, body{
 	width: 100%;
+	height: 100%;
 }
-html, body, div, input, p, button, a, li, ol {
+html, body, div, input, p, button, a, li, ol, table, tr, td {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
 }
 button {
 	width: 100px;
-	height: 30px;
+	height: 35px;
 	border-radius: 5px;
 }
 
@@ -77,6 +78,22 @@ button {
 	border: 3px solid gray; 
 	border-radius: 5px;
 	text-align: center;
+}
+
+/* form 양식 컨테이너 */
+.container-form{
+	width: 100%;
+	border-radius: 10px;
+	border: 3px solid gray;
+	box-sizing: border-box;
+	margin: 30px 0px;
+}
+
+/* form 양식 내부 테이블 */
+.table-form{
+	border-spacing: 30px 5px;
+	margin: 10px auto;
+	padding: 20px;
 }
 
 a:link { 

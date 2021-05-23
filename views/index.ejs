@@ -5,10 +5,30 @@
 	<% if (isAuthenticated) { %>
 		환영합니다. <%= currentUser.name %>님.
 	<% } else { %>
-		로그인하지 않은 상태입니다.
+	<form action="/user/login" method="POST">
+		<table class="table-form">
+			<tr>
+				<td>
+					<label> id </label>
+				</td>
+				<td> : </td>
+				<td>
+					<input type="text" name="id" tabindex="1"/>
+				</td>
+				<td rowspan="2">
+					<button type="submit" class="btn" tabindex="3"> 로그인 </button>	
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label> password </label>
+				</td>
+				<td> : </td>
+				<td>
+					<input type="password" name="password" tabindex="2" />
+				</td>
+			</tr>
+		</table>
+	</form>
 	<% } %>
-</div>
-<div class="navigation">
-	<button onClick="location.href='/post'" class="btn"> 게시판 </button>
-	<button onClick="location.href='/user'" class="btn"> 사용자 </button>
 </div>
