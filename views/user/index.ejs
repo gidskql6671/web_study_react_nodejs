@@ -3,10 +3,13 @@
 </h3>
 <div style="margin-bottom: 15px">
 	<p>
-		이름 : <%= currentUser.name %>
+		닉네임 : <%= currentUser.name %>
 		이메일 : <%= currentUser.email ? currentUser.email : "미등록" %>
 	</p>
 </div>
+<button onClick="location.href='/post?user=<%= currentUser.name %>'" class="btn">
+	작성한 글 보기
+</button>
 <button onClick="location.href='/user/edit'" class="btn">
 	정보 수정
 </button>
