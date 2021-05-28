@@ -1,13 +1,16 @@
 <h3 class="box-content">
 	유저 창
 </h3>
-<div>
+<div style="margin-bottom: 15px">
 	<p>
 		이름 : <%= currentUser.name %>
 		이메일 : <%= currentUser.email ? currentUser.email : "미등록" %>
 	</p>
 </div>
-<button onClick="location.href='user/logout'" class="btn">
+<button onClick="location.href='/user/edit'" class="btn">
+	정보 수정
+</button>
+<button onClick="location.href='/user/logout'" class="btn">
 	로그아웃
 </button>
 <button onClick="location.href='/'" class="btn">
