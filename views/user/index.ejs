@@ -5,6 +5,7 @@
 	<p>
 		닉네임 : <%= currentUser.name %>
 		이메일 : <%= currentUser.email ? currentUser.email : "미등록" %>
+		유형 : <%= currentUser.type %>
 	</p>
 </div>
 <button onClick="location.href='/post?user=<%= currentUser.name %>'" class="btn">
