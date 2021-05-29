@@ -17,6 +17,11 @@
 <button onClick="location.href='/user/logout'" class="btn">
 	로그아웃
 </button>
+<form style="display: inline-block" action="/user?_method=DELETE" method="POST">
+	<button class="btn">
+		회원 탈퇴
+	</button>
+</form>
 <button onClick="location.href='/'" class="btn">
 	홈으로 가기
 </button>
