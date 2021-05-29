@@ -4,7 +4,9 @@
   "description": "컴퓨터를 못만졌더니... 아무것도 기억이 나지 않는다... 재활이 필요하다... 코딩 애플 강의를 이용하여 공부하는 중 https://online.codingapple.com/",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon --ignore './client/' server.js"
+    "server": "nodemon --ignore './client/' server.js",
+    "client":"yarn --cwd ./client start",
+    "dev":"concurrently \"yarn run server\" \"yarn run client\""
   },
   "repository": {
     "type": "git",
@@ -35,5 +37,8 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "properties-reader": "^2.2.0"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.0"
   }
 }
