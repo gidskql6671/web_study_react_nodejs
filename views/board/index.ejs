@@ -28,6 +28,12 @@
 			<div style="margin-bottom: 10px;">
 				<button onclick="location.href='/post/write'" class="btn">글작성</button>
 				<button onclick="location.href='/'" class="btn">홈페이지</button>
+				<form method="GET" style="display: inline-block;">
+					<input name="title" placeholder="검색어를 입력하세요." />
+					<button>
+						검색
+					</button>
+				</form>
 			</div>
 
 		<% for(let i = 0; i < posts.length; i++){ %>
