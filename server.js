@@ -18,14 +18,14 @@ global.reqlib = require('app-root-path').require;
 
 
 /* Router import */
-const indexRouter = require('./lib/routes/index');
-const postRouter = require('./lib/routes/post');
-const apiRouter = require('./lib/routes/apis/index');
-const userRouter = require('./lib/routes/user');
+const indexRouter = require('./src/routes/index');
+const postRouter = require('./src/routes/post');
+const apiRouter = require('./src/routes/apis/index');
+const userRouter = require('./src/routes/user');
 
 
 /* 프로퍼티 로더 */
-const property = require('./properties.js');
+const property = require('./properties');
 const dbLink = property.getDbLink();
 const port = property.getServerPort();
 

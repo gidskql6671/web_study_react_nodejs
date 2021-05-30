@@ -5,8 +5,8 @@ const mongoose = require('mongoose');
 const db = mongoose.connection;
 
 // mongoose Post Model 생성
-const Post = reqlib("/lib/models/Post.js"); 
-const Counter = reqlib("/lib/models/Counter.js");
+const Post = reqlib("/src/models/Post.js"); 
+const Counter = reqlib("/src/models/Counter.js");
 
 /* 모든 post들을 클라이언트에 보내준다. */
 router.get('/', (req, res) => {

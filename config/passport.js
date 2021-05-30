@@ -1,6 +1,6 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const User = require('../lib/models/User');
+const User = require('../src/models/User');
 
 exports.isAuthenticated = (req, res, next) => {
 	if (req.isAuthenticated()){
