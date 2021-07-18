@@ -62,7 +62,7 @@ router.get('/write', isAuthenticated, (req, res) => {
 	if (req.query.postId){
 		const postId = parseInt(req.query.postId);
 		
-		postService.getPost({id: postId})
+		postService.getPostOne({id: postId})
 		.then(post => {
 			prevContent._id = post._id;
 			prevContent.title = post.title;
