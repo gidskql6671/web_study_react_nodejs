@@ -4,20 +4,20 @@
   "description": "React와 Nodejs로 공부하는 프로젝트",
   "main": "server.js",
   "scripts": {
+    "start": "nodemon --ignore './client/' server.js",
     "server": "nodemon --ignore './client/' server.js",
     "client":"yarn --cwd ./client start",
     "dev":"concurrently \"yarn run server\" \"yarn run client\""
   },
   "repository": {
     "type": "git",
-    "url": "git+https://87141d7de8d7635ba927bde90f10f1e5eb2d9909@github.com/gidskql6671/web_study.git"
+    "url": "git+https://github.com/gidskql6671/web_study.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/gidskql6671/web_study/issues"
   },
-  "homepage": "https://github.com/gidskql6671/web_study#readme",
   "dependencies": {
     "app-root-path": "^3.0.0",
     "bcrypt": "^5.0.1",
