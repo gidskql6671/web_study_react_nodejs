@@ -76,32 +76,28 @@ exports.getPostOne = (post_info) => {
 // id 값이 존재할 시, 해당 게시물만 삭제한다.
 // 반환 값은 Promise로 삭제한 게시물 개수를 반환한다.
 exports.deletePost = (post_info) => {
-	return new Promise((resolve, reject) => {
-		// id -> _id로 바꿔주는 과정
-		id2_id(post_info);
+	// id -> _id로 바꿔주는 과정
+	id2_id(post_info);
+	
+	return Post.deleteMany(post_info).exec()
+	.then(({ deletedCount }) => {
+		const query = {name: 'postId'},
+				update = { inc : {count: deletedCount * -1} };
 		
-		Post.deleteMany(post_info).exec()
-		.then(({ deletedCount }) => {
-			const query = {name: 'postId'},
-				  update = { inc : {count: deletedCount * -1} };
-			
-			return Counter.updateOne(query, update).exec();
-		})
-		.then(data => resolve(data))
-		.catch(err => reject(err));
+		return Counter.updateOne(query, update).exec();
 	})
+	.then(data => data)
+	.catch(err => err);
 };
 
 // Post 데이터를 업데이트 한다.
 // 반환 값은 Promise로 수정한 게시물 개수를 반환한다.
 exports.updatePost = (old_post_info, new_post_info) => {
-	return new Promise((resolve, reject) => {
-		// id -> _id로 바꿔주는 과정
-		id2_id(old_post_info);
-		id2_id(new_post_info);
-		
-		Post.updateMany(old_post_info, new_post_info).exec()
-		.then(result => resolve(result.nModified))
-		.catch(err => reject(err));
-	});
+	// id -> _id로 바꿔주는 과정
+	id2_id(old_post_info);
+	id2_id(new_post_info);
+	
+	Post.updateMany(old_post_info, new_post_info).exec()
+	.then(result => result.nModified)
+	.catch(err => err);
 };
