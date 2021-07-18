@@ -52,14 +52,12 @@ exports.createPost = ( post_info ) => {
 // 객체 값과 일치하는 모든 Post 데이터를 가져온다.
 // 반환값은 Promise로 게시물 정보를 반환함.
 exports.getPost = (post_info) => {
-	return new Promise((resolve, reject) => {
-		// id -> _id로 바꿔주는 과정
-		id2_id(post_info);
-		
-		Post.find(post_info).exec()
-		.then(data => resolve(data))
-		.catch( err => reject(err));
-	})
+	// id -> _id로 바꿔주는 함수
+	id2_id(post_info)
+	
+	return Post.find(post_info).exec()
+			.then(data => data)
+			.catch(err => err)
 };
 
 // 객체 값과 일치하는 첫번째 Post 데이터를 가져온다.
