@@ -24,10 +24,10 @@ const apiRouter = require('./src/routes/apis/index');
 const userRouter = require('./src/routes/user');
 
 
-/* 프로퍼티 로더 */
-const property = require('./properties');
-const dbLink = property.getDbLink();
-const port = property.getServerPort();
+/* 환경변수 설정 */
+require('dotenv').config();
+const dbLink = process.env.DATABASE_URL;
+const port = process.env.SERVER_PORT;
 
 
 // view 관련

@@ -25,5 +25,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # 설정 파일
-config.properties
-goorm.manifest
+.env
