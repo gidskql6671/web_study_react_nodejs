@@ -2,43 +2,22 @@
   "name": "web_study",
   "version": "1.0.0",
   "description": "React와 Nodejs로 공부하는 프로젝트",
-  "main": "server.js",
   "scripts": {
-    "start": "nodemon --ignore './client/' server.js",
-    "server": "nodemon --ignore './client/' server.js",
-    "client":"yarn --cwd ./client start",
-    "dev":"concurrently \"yarn run server\" \"yarn run client\""
+    "build": "cd frontend && yarn build",
+    
+    "prestart": "yarn build",
+    "start": "cd backend && node server.js",
+    
+    "predev": "yarn build",
+    "dev": "cd backend && nodemon server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gidskql6671/web_study.git"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/gidskql6671/web_study/issues"
-  },
-  "dependencies": {
-    "app-root-path": "^3.0.0",
-    "bcrypt": "^5.0.1",
-    "connect-flash": "^0.1.1",
-    "cors": "^2.8.5",
-    "ejs": "^3.1.6",
-    "express": "^4.17.1",
-    "express-ejs-layouts": "^2.5.0",
-    "express-session": "^1.17.1",
-    "http-error": "^0.0.6",
-    "method-override": "^3.0.0",
-    "moment": "^2.29.1",
-    "moment-timezone": "^0.5.33",
-    "mongodb": "^3.6.3",
-    "mongoose": "^5.11.15",
-    "nodemon": "^2.0.7",
-    "passport": "^0.4.1",
-    "passport-local": "^1.0.0",
-    "properties-reader": "^2.2.0"
-  },
-  "devDependencies": {
-    "concurrently": "^6.2.0"
-  }
+  "private": "true",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ]
 }
