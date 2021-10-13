@@ -1,31 +1,8 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const User = require('../src/models/User');
+const User = require('../models/User');
 
-exports.isAuthenticated = (req, res, next) => {
-	if (req.isAuthenticated()){
-		return next();
-	}
-	
-	// remember where session come from
-	req.session.returnTo = req.originalUrl;
-	req.session.save((err) =>{
-		if (err) return next(err);
-		res.redirect('/user/login');
-	});
-}
-
-exports.isNotAuthenticated = (req, res, next) => {
-	if (!req.isAuthenticated()){
-		return next();
-	}
-	
-	const message = encodeURIComponent('로그인된 상태입니다.');
-	res.redirect('/');
-}
-
-
-exports.init = () => {
+module.exports = () => {
 	// Serialize & Deserialize User
 	passport.serializeUser((user, done) => {
 		done(null, user.id);
