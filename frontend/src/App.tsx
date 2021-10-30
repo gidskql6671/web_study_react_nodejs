@@ -1,12 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled from "styled-components";
+import { RecoilRoot } from 'recoil';
+import Header from './components/Header';
+
+const Content = styled.div`
+	text-align: center;
+`;
 
 function App() {
 	return (
-		<div className="App">
-			asd
-		</div>
+		<RecoilRoot>
+			<Header/>
+			<Content>
+				내용
+			</Content>
+		</RecoilRoot>
 	);
 }
 
