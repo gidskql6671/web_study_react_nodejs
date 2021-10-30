@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "React와 Nodejs로 공부하는 프로젝트",
   "scripts": {
-    "build": "cd frontend && yarn build",
+    "build": "cd frontend && yarn frontend:build",
     
     "prestart": "yarn build",
-    "start": "cd backend && node server.js",
+    "start": "cd backend && yarn backend:start",
     
     "predev": "yarn build",
-    "dev": "cd backend && nodemon server.js"
+    "dev": "cd backend && yarn backend:dev"
   },
   "repository": {
     "type": "git",
